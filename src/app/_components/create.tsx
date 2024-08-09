@@ -221,7 +221,14 @@ export default function Create({ fonts }: TCreateProps) {
                         <ChooseTemplate onTemplateClick={onTemplateClick} />
                       );
                     case ECreateProjectStepName.projectConfig:
-                      return <div>step2</div>;
+                      return (
+                        <ProjectConfig
+                          form={createProjectForm}
+                          testnetMode={testnetMode}
+                          toggleTestnetSwitch={toggleTestnetSwitch}
+                          scrollToTop={scrollToTop}
+                        />
+                      );
                     case ECreateProjectStepName.customize:
                       return <div>step3</div>;
 

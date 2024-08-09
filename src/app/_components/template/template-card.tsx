@@ -1,7 +1,6 @@
 import React from "react";
 
 import { HandMetal, WandSparkles } from "lucide-react";
-// import { useSession } from 'next-auth/react';
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
@@ -27,7 +26,6 @@ export default function TemplateCard({
   isPro,
   onClick,
 }: TTemplateCardProps) {
-  // const { status } = useSession();
   const modules =
     template.contracts.map((contract) => ({
       moduleName: contract.moduleName,
@@ -37,12 +35,12 @@ export default function TemplateCard({
   return (
     <div
       className={cn(
-        "lg:hover:border-primary-light group relative w-full rounded-3xl border-2 p-3 lg:px-6",
+        "group relative w-full rounded-3xl border-2 p-3 lg:px-6 lg:hover:border-primary-light",
         modules.length > 0
-          ? "min-h-[620px] md:min-h-[600px] lg:min-h-[521px]"
+          ? "min-h-[620px] lg:min-h-[521px] md:min-h-[600px]"
           : "",
         isPro
-          ? "border-secondary-dark lg:hover:bg-template-card-orange-gradient lg:hover:border-secondary"
+          ? "border-secondary-dark lg:hover:border-secondary lg:hover:bg-template-card-orange-gradient"
           : "lg:hover:bg-template-card-gradient",
       )}
     >
@@ -78,26 +76,23 @@ export default function TemplateCard({
             )}
           >
             <div className="h-4 lg:h-8" />
-            <p className="text-s sm:min-h-auto md:min-h-[90px] lg:min-h-[85px]">
+            <p className="text-s sm:min-h-auto lg:min-h-[85px] md:min-h-[90px]">
               {description}
             </p>
             <div className="h-4" />
-            {status === "authenticated" ? (
-              <Button
-                className={cn(
-                  "flex w-full items-center gap-2 rounded",
-                  isPro
-                    ? "bg-secondary-dark hover:text-secondary-dark text-secondary hover:bg-secondary"
-                    : "hover:bg-primary-light bg-primary",
-                )}
-                type="button"
-                onClick={onClick}
-              >
-                <WandSparkles /> Create with template
-              </Button>
-            ) : (
-              <div className="flex w-full">{/* <SignIn /> */}</div>
-            )}
+
+            <Button
+              className={cn(
+                "flex w-full items-center gap-2 rounded",
+                isPro
+                  ? "bg-secondary-dark text-secondary hover:bg-secondary hover:text-secondary-dark"
+                  : "bg-primary hover:bg-primary-light",
+              )}
+              type="button"
+              onClick={onClick}
+            >
+              <WandSparkles /> Create with template
+            </Button>
           </div>
         </div>
 
