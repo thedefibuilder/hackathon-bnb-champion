@@ -230,7 +230,13 @@ export default function Create({ fonts }: TCreateProps) {
                         />
                       );
                     case ECreateProjectStepName.customize:
-                      return <div>step3</div>;
+                      return (
+                        <Customize
+                          form={createProjectForm}
+                          scrollToTop={scrollToTop}
+                          fonts={fonts}
+                        />
+                      );
 
                     case ECreateProjectStepName.review:
                       return <div>step4</div>;
