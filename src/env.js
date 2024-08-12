@@ -12,7 +12,6 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
     DATABASE_URL: z.string().url(),
-
     FONTS_KEY: z.string(),
   },
   runtimeEnv: {

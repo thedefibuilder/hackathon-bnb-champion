@@ -1,15 +1,22 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
-import type { Abi, Address, Hex, PublicClient, TransactionReceipt, WalletClient } from 'viem';
-import type { TChain } from '../types/chain';
+import type {
+  Abi,
+  Address,
+  Hex,
+  PublicClient,
+  TransactionReceipt,
+  WalletClient,
+} from "viem";
+import type { TChain } from "../types/chain";
 
-import { useConnectModal } from '@rainbow-me/rainbowkit';
-import { createPublicClient, createWalletClient, custom, http } from 'viem';
-import { useAccount, useChainId, useSwitchChain } from 'wagmi';
+import { useConnectModal } from "@rainbow-me/rainbowkit";
+import { createPublicClient, createWalletClient, custom, http } from "viem";
+import { useAccount, useChainId, useSwitchChain } from "wagmi";
 
-import { useToast } from '@/components/ui/toast/use-toast';
+import { useToast } from "@/components/ui/use-toast";
 
-import { mapWalletErrorsToMessage } from '../errors/wallet-errors';
+import { mapWalletErrorsToMessage } from "../errors/wallet-errors";
 
 type TWriteContractResponse = {
   address: Address;
@@ -35,13 +42,13 @@ export default function useDeployContract(targetChain: TChain) {
     if (window.ethereum && walletAddress) {
       const publicClient = createPublicClient({
         chain: targetChain.network,
-        transport: http()
+        transport: http(),
       });
 
       const walletClient = createWalletClient({
         account: walletAddress,
         chain: targetChain.network,
-        transport: custom(window.ethereum)
+        transport: custom(window.ethereum),
       });
 
       setPublicClient(publicClient);
@@ -55,14 +62,14 @@ export default function useDeployContract(targetChain: TChain) {
         openConnectModal
           ? openConnectModal()
           : toast({
-              title: 'Connect wallet',
-              description: 'Please connect your wallet to deploy a contract'
+              title: "Connect wallet",
+              description: "Please connect your wallet to deploy a contract",
             });
         return;
       }
       if (!publicClient || !walletClient || !activeChainId) {
         setIsLoading(false);
-        setError('Could not detect wallet client.');
+        setError("Could not detect wallet client.");
         setResponse(null);
 
         return;
@@ -75,7 +82,7 @@ export default function useDeployContract(targetChain: TChain) {
 
         if (activeChainId !== targetChain.network.id) {
           await switchChainAsync({
-            chainId: targetChain.network.id
+            chainId: targetChain.network.id,
           });
         }
 
@@ -84,27 +91,34 @@ export default function useDeployContract(targetChain: TChain) {
           bytecode,
           args,
           account: walletAddress,
-          chain: targetChain.network
+          chain: targetChain.network,
         });
         const receipt = await publicClient.waitForTransactionReceipt({ hash });
-        if (!receipt.contractAddress) throw new Error('Contract address not found in receipt');
+        if (!receipt.contractAddress)
+          throw new Error("Contract address not found in receipt");
 
         setIsLoading(false);
         setError(null);
         setResponse({
           address: receipt.contractAddress,
           hash,
-          receipt
+          receipt,
         });
       } catch (error: unknown) {
         setIsLoading(false);
         setError(mapWalletErrorsToMessage(error).message);
         setResponse(null);
 
-        console.error('ERROR DEPLOYING CONTRACT', error);
+        console.error("ERROR DEPLOYING CONTRACT", error);
       }
     },
-    [publicClient, walletClient, activeChainId, walletAddress, targetChain.network]
+    [
+      publicClient,
+      walletClient,
+      activeChainId,
+      walletAddress,
+      targetChain.network,
+    ],
   );
 
   return {
@@ -113,6 +127,6 @@ export default function useDeployContract(targetChain: TChain) {
     isLoading,
     error,
     response,
-    deployContract
+    deployContract,
   };
 }

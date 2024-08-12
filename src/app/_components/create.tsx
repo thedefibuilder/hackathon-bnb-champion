@@ -9,7 +9,7 @@ import type { z } from "zod";
 import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { erc20Abi, parseUnits } from "viem";
-import { getChainConfig, paymentChains } from "@/lib/chains";
+import { getChainConfig } from "@/lib/chains";
 import { checkoutAddress } from "@/lib/constants/checkout";
 import { calculateTotalPrice } from "@/lib/features";
 import useWriteContract from "@/lib/hooks/use-write-contract";
@@ -52,41 +52,16 @@ export default function Create({ fonts }: TCreateProps) {
       name: "",
       chainId: undefined,
       contracts: {},
-      checkout: {
-        paymentMethod: {
-          chainId: paymentChains[0].network.id,
-          currency: paymentChains[0].paymentCurrencies[0]?.address,
-          currencyDecimals: paymentChains[0].paymentCurrencies[0]?.decimals,
-        },
-      },
     },
   });
 
-  const paymentChainId = createProjectForm.watch(
-    "checkout.paymentMethod.chainId",
-  );
-  const paymentChain = useMemo(
-    () =>
-      paymentChains.find((chain) => chain.network.id === paymentChainId) ??
-      paymentChains[0],
-    [paymentChainId],
-  );
   const createProject = api.project.create.useMutation();
-  const {
-    isLoading: isPaymentLoading,
-    errorMessage: paymentError,
-    response: paymentResponse,
-    writeContract: writeTransferPayment,
-  } = useWriteContract(paymentChain);
 
   useEffect(() => {
-    if (createProject.isError || paymentError) {
+    if (createProject.isError) {
       toast({
         title: "Project Error",
-        description:
-          paymentError?.message ??
-          createProject.error?.message ??
-          "Could not create project",
+        description: createProject.error?.message ?? "Could not create project",
         variant: "destructive",
       });
     } else if (createProject.isSuccess) {
@@ -103,20 +78,7 @@ export default function Create({ fonts }: TCreateProps) {
       });
       redirect("/create");
     }
-  }, [createProject.isError, createProject.isSuccess, paymentError]);
-
-  useEffect(() => {
-    const formValues = createProjectForm.getValues();
-    if (!formValues.checkout?.paymentMethod.currency || !paymentResponse?.hash)
-      return;
-    createProject.mutate({
-      ...formValues,
-      checkout: {
-        ...formValues.checkout,
-        txHash: paymentResponse?.hash,
-      },
-    });
-  }, [paymentResponse?.hash]);
+  }, [createProject.isError, createProject.isSuccess]);
 
   function onTemplateClick(template: ETemplateName) {
     const selectedTemplate = templates.find((t) => t.name === template);
@@ -136,25 +98,8 @@ export default function Create({ fonts }: TCreateProps) {
 
   async function triggerCreateProject() {
     const formValues = createProjectForm.getValues();
-    if (!formValues.checkout?.paymentMethod.currency) return;
-    const chain = getChainConfig(formValues.chainId);
-    const paymentAmount = chain?.network.testnet
-      ? 0n
-      : parseUnits(
-          calculateTotalPrice(formValues.contracts).toFixed(2),
-          formValues.checkout.paymentMethod.currencyDecimals,
-        );
 
-    if (paymentAmount > 0n) {
-      await writeTransferPayment(
-        erc20Abi,
-        "transfer",
-        [checkoutAddress, paymentAmount],
-        formValues.checkout.paymentMethod.currency as Address,
-      );
-    } else {
-      createProject.mutate(formValues);
-    }
+    createProject.mutate(formValues);
   }
 
   const toggleTestnetSwitch = () => {
@@ -242,9 +187,7 @@ export default function Create({ fonts }: TCreateProps) {
                       return (
                         <ProjectReview
                           form={createProjectForm}
-                          isCreating={
-                            createProject.isPending || isPaymentLoading
-                          }
+                          isCreating={createProject.isPending}
                           triggerCreateProject={triggerCreateProject}
                           testnetMode={testnetMode}
                         />

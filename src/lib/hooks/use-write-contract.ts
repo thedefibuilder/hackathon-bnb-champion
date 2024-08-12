@@ -20,7 +20,7 @@ import { mapWalletErrorsToMessage } from "../errors/wallet-errors";
 import { useToast } from "@/components/ui/use-toast";
 
 type TWriteContractResponse = {
-  simulation: SimulateContractReturnType;
+  result: unknown;
   hash: Hex;
   receipt: TransactionReceipt;
 };
@@ -112,7 +112,7 @@ export default function useWriteContract(targetChain: TChain) {
         setIsLoading(false);
         setErrorMessage(null);
         setResponse({
-          simulation,
+          result: simulation.result,
           hash,
           receipt,
         });

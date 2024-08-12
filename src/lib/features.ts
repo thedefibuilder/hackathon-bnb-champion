@@ -259,7 +259,6 @@ export const featuresToOptionsERC20 = (featureNames: EFeatureName[]) => {
     votes: featureNames.includes(EFeatureName.ERC20_VOTES),
     flashmint: featureNames.includes(EFeatureName.ERC20_FLASH_MINT),
     ownable: featureNames.includes(EFeatureName.ACCESS_OWNABLE),
-    // taxable: featureNames.includes(EFeatureName.ERC20_TAXABLE)
   } satisfies TERC20Options;
 };
 
