@@ -1,0 +1,25 @@
+{
+  "lang": "en-EN",
+  "name": "DeFi Builder - Modular Builder App",
+  "short_name": "DeFi Builder App",
+  "description": "Create a DeFi project and deploy it on any blockchain.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#000",
+  "background_color": "#000",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

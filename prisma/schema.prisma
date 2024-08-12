@@ -11,11 +11,43 @@ datasource db {
   directUrl = env("DIRECT_DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model Chain {
+  chainId  Int       @id
+  projects Project[]
+}
 
-    @@index([name])
+model Project {
+  id            Int        @id @default(autoincrement())
+  name          String
+  chainId       Int
+  paymentTxHash String?    @unique
+  contracts     Contract[]
+  dapp          Dapp?
+  chain         Chain      @relation(fields: [chainId], references: [chainId])
+}
+
+model Dapp {
+  id        Int     @id @default(autoincrement())
+  metadata  Json
+  projectId Int     @unique
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model Contract {
+  address      String?   @db.VarChar(42)
+  moduleName   String
+  featureNames String[]
+  projectId    Int
+  artifactKey  String?
+  artifact     Artifact? @relation(fields: [artifactKey], references: [key])
+  project      Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, moduleName])
+}
+
+model Artifact {
+  key       String     @id
+  abi       Json
+  bytecode  String
+  contracts Contract[]
 }
