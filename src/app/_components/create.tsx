@@ -239,7 +239,16 @@ export default function Create({ fonts }: TCreateProps) {
                       );
 
                     case ECreateProjectStepName.review:
-                      return <div>step4</div>;
+                      return (
+                        <ProjectReview
+                          form={createProjectForm}
+                          isCreating={
+                            createProject.isPending || isPaymentLoading
+                          }
+                          triggerCreateProject={triggerCreateProject}
+                          testnetMode={testnetMode}
+                        />
+                      );
                     default:
                       return null;
                   }
