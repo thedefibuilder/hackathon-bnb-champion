@@ -15,22 +15,17 @@ type TChooseTemplateProps = {
 
 const TemplateHero = dynamic(() => import("./template/template-hero"), {
   loading: () => (
-    <Skeleton className="h-[128px] w-full rounded-3xl md:h-[232px] lg:h-[136px]" />
+    <Skeleton className="h-[128px] w-full rounded-3xl lg:h-[136px] md:h-[232px]" />
   ),
   ssr: false,
 });
 
 const TemplateCard = dynamic(() => import("./template/template-card"), {
   loading: () => (
-    <Skeleton className="h-[507px] w-full rounded-3xl md:h-[487px] lg:h-[483px]" />
+    <Skeleton className="h-[507px] w-full rounded-3xl lg:h-[483px] md:h-[487px]" />
   ),
   ssr: false,
 });
-
-// const AiBuilderBanner = dynamic(() => import('@/components/ai-builder-banner'), {
-//   loading: () => <Skeleton className='h-[507px] w-full rounded-3xl lg:h-[483px] md:h-[487px]' />,
-//   ssr: false
-// });
 
 export default function ChooseTemplate({
   onTemplateClick,
@@ -64,7 +59,6 @@ export default function ChooseTemplate({
           </Col>
         ))}
       </Row>
-      {/* <AiBuilderBanner /> */}
       <div className="h-20" />
     </>
   );
