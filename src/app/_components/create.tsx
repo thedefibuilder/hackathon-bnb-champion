@@ -1,18 +1,14 @@
 "use client";
 
-import React, { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 
 import type { ETemplateName } from "@/lib/templates";
-import type { Address } from "viem";
+
 import type { z } from "zod";
 
 import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { erc20Abi, parseUnits } from "viem";
-import { getChainConfig } from "@/lib/chains";
-import { checkoutAddress } from "@/lib/constants/checkout";
-import { calculateTotalPrice } from "@/lib/features";
-import useWriteContract from "@/lib/hooks/use-write-contract";
+
 import {
   createProjectRoutes,
   ECreateProjectStepName,
@@ -121,9 +117,6 @@ export default function Create({ fonts }: TCreateProps) {
 
   return (
     <Container variant="fluid">
-      {/* <Suspense fallback={<div>Loading...</div>}>
-        <NewsletterSuspense />
-      </Suspense> */}
       <div ref={topRef} className="absolute left-0 top-0 h-0 w-full"></div>
       <Form {...createProjectForm}>
         <form>
