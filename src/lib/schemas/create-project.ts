@@ -47,6 +47,7 @@ export const createProjectSchema = z.object({
     ),
   dapp: z
     .object({
+      domain: z.string(),
       colorOption: z.enum(colorNames).default(EColorNames.Brass),
       fontOption: z.enum(fontNames).default(EFontNames.Jakarta),
       socialOption: z.object({
