@@ -1,19 +1,17 @@
 import React, { useEffect } from "react";
-
+import dynamic from "next/dynamic";
+import WebFont from "webfontloader";
+import { Skeleton } from "@/components/ui/skeleton";
+import { getChainConfig } from "@/lib/chains";
+import useDappColors from "@/lib/hooks/use-dapp-colors";
+import { useLocalStorage } from "@/lib/hooks/use-local-storage";
+import { type TFontItem } from "@/lib/server-actions";
+import { Col, Row } from "@/components/common/grid";
+import Token from "../dapp/token";
 import type { ThemeColors, ThemeName } from "@/lib/hooks/use-dapp-colors";
 import type { createProjectSchema } from "@/lib/schemas/create-project";
 import type { useForm } from "react-hook-form";
 import type { z } from "zod";
-
-import dynamic from "next/dynamic";
-import WebFont from "webfontloader";
-
-import { Skeleton } from "@/components/ui/skeleton";
-import { getChainConfig } from "@/lib/chains";
-import useDappColors from "@/lib/hooks/use-dapp-colors";
-import { type TFontItem } from "@/lib/server-actions";
-import { Col, Row } from "@/components/common/grid";
-import Token from "../dapp/token";
 
 type TCustomizeProps = {
   form: ReturnType<typeof useForm<z.infer<typeof createProjectSchema>>>;

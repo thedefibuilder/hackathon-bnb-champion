@@ -1,6 +1,4 @@
-/* eslint-disable unicorn/no-array-reduce */
-
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 
 import type { EModuleName } from "@/lib/modules";
 import type { TReviewProps } from "./review";
@@ -14,10 +12,26 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { calculateTotalPrice, getModuleFeatureConfig } from "@/lib/features";
+import { getModuleFeatureConfig } from "@/lib/features";
 import { cn } from "@/lib/utils";
-import ControlledFormChainSelect from "@/components/common/chain-select";
 import ButtonSpinner from "@/components/common/button-spinner";
+import { useLocalStorage } from "@/lib/hooks/use-local-storage";
+import { ThemeName } from "@/lib/hooks/use-dapp-colors";
+
+export type SocialOptions = {
+  Facebook?: string;
+  X?: string;
+  Discord?: string;
+  Github?: string;
+  Instagram?: string;
+};
+
+type TDappSettings = {
+  projectName: string;
+  colorOption: ThemeName;
+  fontOption: string;
+  socialOption: SocialOptions;
+};
 
 export default function ReviewMain({
   form,
@@ -26,7 +40,48 @@ export default function ReviewMain({
   triggerCreateProject,
 }: TReviewProps) {
   const contracts = form.watch("contracts");
+  const colorOption = form.watch("dapp.colorOption");
+  const fontOption = form.watch("dapp.fontOption");
+  const socialOption = form.watch("dapp.socialOption");
+  const projectName = form.watch("name");
+
   const defaultAccordionValue = Object.keys(contracts)[0];
+  const [storedSettings, setStoredSettings] = useLocalStorage<TDappSettings>(
+    "dappSettings",
+    {
+      projectName: "",
+      colorOption: "Twilight",
+      fontOption: "",
+      socialOption: {},
+    },
+  );
+
+  const updateLocalStorage = useCallback(() => {
+    const newSettings: TDappSettings = {
+      projectName:
+        projectName || (storedSettings ? storedSettings.projectName : ""),
+      colorOption:
+        colorOption ||
+        (storedSettings ? storedSettings.colorOption : "Twilight"),
+      fontOption:
+        fontOption || (storedSettings ? storedSettings.fontOption : ""),
+      socialOption:
+        socialOption || (storedSettings ? storedSettings.socialOption : {}),
+    };
+    setStoredSettings(newSettings);
+  }, [
+    projectName,
+    colorOption,
+    fontOption,
+    socialOption,
+    storedSettings,
+    setStoredSettings,
+  ]);
+
+  const handleCreateProject = () => {
+    updateLocalStorage();
+    triggerCreateProject();
+  };
 
   return (
     <Row className="relative flex">
@@ -41,7 +96,7 @@ export default function ReviewMain({
         <div className="md:h-10" />
         <div
           className={cn(
-            "bg-template-card-gradient rounded-[14px] border border-purple-500 px-8 lg:relative lg:z-40 lg:min-h-[610px]",
+            "rounded-[14px] border border-purple-500 bg-template-card-gradient px-8 lg:relative lg:z-40 lg:min-h-[610px]",
             "flex flex-col justify-between",
           )}
         >
@@ -111,7 +166,7 @@ export default function ReviewMain({
 
           <div className="h-8" />
           <ButtonSpinner
-            onClick={triggerCreateProject}
+            onClick={handleCreateProject}
             className="mb-8 h-14 w-full rounded text-xl"
             isLoading={isCreating}
             defaultContent={"Confirm"}

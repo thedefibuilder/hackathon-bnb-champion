@@ -13,12 +13,14 @@ export default function CustomizeFooter({
   form,
   scrollToTop,
 }: CreateProjectProps) {
+  console.log(form.formState.errors);
   const { nextStep } = useStepper();
 
   async function triggerContinue() {
     await form.trigger();
     if (Object.keys(form.formState.errors).length === 0) {
       nextStep();
+
       scrollToTop();
     }
   }
