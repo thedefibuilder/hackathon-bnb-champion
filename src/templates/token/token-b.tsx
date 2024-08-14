@@ -13,7 +13,7 @@ import { IconCheck, IconPencil, IconX } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import WebFont from "webfontloader";
 
-export default function TokenTango() {
+export default function TokenB() {
   const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
   const projectName = dappSettings.projectName;
   const fonts = dappSettings.fontOption;

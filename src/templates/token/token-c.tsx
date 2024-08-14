@@ -5,7 +5,7 @@ import useDappColors from "@/lib/hooks/use-dapp-colors";
 import { useEffect } from "react";
 import WebFont from "webfontloader";
 
-export default function TokneTornado() {
+export default function TokenC() {
   const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
   const projectName = dappSettings.projectName;
   const fonts = dappSettings.fontOption;

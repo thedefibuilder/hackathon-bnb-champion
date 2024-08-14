@@ -114,7 +114,7 @@ export default function Create({ fonts }: TCreateProps) {
       scrollToTop();
     }
   }, [createProjectForm.formState.errors]);
-
+  console.log(createProjectForm.formState.errors);
   return (
     <Container variant="fluid">
       <div ref={topRef} className="absolute left-0 top-0 h-0 w-full"></div>

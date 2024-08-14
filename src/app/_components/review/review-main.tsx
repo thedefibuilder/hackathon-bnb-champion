@@ -30,7 +30,7 @@ type TDappSettings = {
   projectName: string;
   colorOption: ThemeName;
   fontOption: string;
-  socialOption: SocialOptions;
+  socialOption?: SocialOptions;
 };
 
 export default function ReviewMain({

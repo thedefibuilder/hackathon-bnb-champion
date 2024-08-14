@@ -47,7 +47,7 @@ export const createProjectSchema = z.object({
     ),
   dapp: z
     .object({
-      domain: z.string(),
+      domain: z.string().optional(),
       colorOption: z.enum(colorNames).default(EColorNames.Brass),
       fontOption: z.enum(fontNames).default(EFontNames.Jakarta),
       socialOption: z.object({
@@ -58,6 +58,7 @@ export const createProjectSchema = z.object({
         [ESocialNames.Instagram]: z.string().url().optional(),
       }),
     })
+    .optional()
     .optional(),
 });
 

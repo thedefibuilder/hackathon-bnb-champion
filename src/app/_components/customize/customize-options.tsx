@@ -210,12 +210,12 @@ export default function CustomizeOptions({
           <AccordionTrigger className="px-3 py-2 text-lg font-bold hover:no-underline">
             <div className="flex items-center gap-2">
               <socialOptions.icon className="h-6 w-6" />
-              {socialOptions.name}
+              {socialOptions?.name}
             </div>
           </AccordionTrigger>
           <AccordionContent>
             <div className="h-3" />
-            {socialOptions.options.map((option, index) => (
+            {socialOptions?.options.map((option, index) => (
               <div key={`${option.socialName}-${index}`} className="px-3">
                 <Label className="pl-2">{option.socialName}</Label>
                 <div className="h-2" />

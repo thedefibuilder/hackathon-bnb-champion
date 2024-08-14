@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import WebFont from "webfontloader";
 
-export default function TokenFiasco() {
+export default function TokenA() {
   const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
   const projectName = dappSettings.projectName;
   const fonts = dappSettings.fontOption;
