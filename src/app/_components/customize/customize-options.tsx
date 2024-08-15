@@ -83,36 +83,38 @@ export default function CustomizeOptions({
 
   return (
     <>
-      <div className="flex w-full items-center gap-3">
-        <IconWorld stroke={2} />
-        <h4 className="text-lg font-bold">Domain</h4>
+      <div className="rounded-[14px] border p-4">
+        <div className="flex w-full items-center gap-3">
+          <IconWorld stroke={2} />
+          <h4 className="text-lg font-bold">Domain</h4>
+        </div>
+        <FormField
+          name="domain"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-[16px] text-muted-foreground md:text-xl">
+                Get a custom domain and scale your project with BNB Greenfield
+                hosting services
+              </FormLabel>
+              <FormMessage />
+              <Row className="items-center">
+                <Col>
+                  <div className="flex w-full items-center gap-3">
+                    <FormControl>
+                      <Input
+                        placeholder="Add custom domain"
+                        {...field}
+                        className="!w-[250px] rounded-[14px] placeholder:text-muted-foreground"
+                      />
+                    </FormControl>
+                    <p>.bnb</p>
+                  </div>
+                </Col>
+              </Row>
+            </FormItem>
+          )}
+        />
       </div>
-      <FormField
-        name="domain"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="text-[16px] text-muted-foreground md:text-xl">
-              Get a custom domain and scale your project with BNB Greenfield
-              hosting services
-            </FormLabel>
-            <FormMessage />
-            <Row className="items-center">
-              <Col>
-                <div className="flex w-full items-center gap-3">
-                  <FormControl>
-                    <Input
-                      placeholder="Add custom domain"
-                      {...field}
-                      className="!w-[280px] rounded-[14px] placeholder:text-muted-foreground"
-                    />
-                  </FormControl>
-                  <p>.bnb</p>
-                </div>
-              </Col>
-            </Row>
-          </FormItem>
-        )}
-      />
       <div className="h-8" />
       <Accordion type="single">
         <AccordionItem
