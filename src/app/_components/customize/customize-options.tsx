@@ -53,6 +53,8 @@ export default function CustomizeOptions({
     "Space Mono",
   ]);
 
+  console.log(form.formState.errors);
+
   const filteredFonts =
     fonts?.filter(
       (font) =>
