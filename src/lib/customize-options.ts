@@ -1,36 +1,45 @@
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from "lucide-react";
 
-import { Brush, HeartHandshake, Type } from 'lucide-react';
+import { Brush, HeartHandshake, Type } from "lucide-react";
 
 export enum EColorNames {
-  Twilight = 'Twilight',
-  Neon = 'Neon',
-  Metallic = 'Metallic',
-  Navy = 'Navy',
-  Brass = 'Brass'
+  Twilight = "Twilight",
+  Neon = "Neon",
+  Metallic = "Metallic",
+  Navy = "Navy",
+  Brass = "Brass",
 }
 
-export const colorNames = Object.values(EColorNames) as [EColorNames, ...EColorNames[]];
+export const colorNames = Object.values(EColorNames) as [
+  EColorNames,
+  ...EColorNames[],
+];
 
 export enum EFontNames {
-  Jakarta = 'Jakarta',
-  Inter = 'Inter',
-  Montserrat = 'Montserrat',
-  Space = 'Space',
-  Ubuntu = 'Ubuntu'
+  Jakarta = "Jakarta",
+  Inter = "Inter",
+  Montserrat = "Montserrat",
+  Space = "Space Mono",
+  Ubuntu = "Ubuntu",
 }
 
-export const fontNames = Object.values(EFontNames) as [EFontNames, ...EFontNames[]];
+export const fontNames = Object.values(EFontNames) as [
+  EFontNames,
+  ...EFontNames[],
+];
 
 export enum ESocialNames {
-  Facebook = 'Facebook',
-  X = 'X',
-  Discord = 'Discord',
-  Github = 'Github',
-  Instagram = 'Instagram'
+  Facebook = "Facebook",
+  X = "X",
+  Discord = "Discord",
+  Github = "Github",
+  Instagram = "Instagram",
 }
 
-export const socialNames = Object.values(ESocialNames) as [ESocialNames, ...ESocialNames[]];
+export const socialNames = Object.values(ESocialNames) as [
+  ESocialNames,
+  ...ESocialNames[],
+];
 
 export type TSocialOption = {
   socialName: ESocialNames;
@@ -46,9 +55,9 @@ export type TFontOption = {
 };
 
 export enum ECustomizeOptions {
-  colors = 'Colors',
-  fonts = 'Fonts',
-  socials = 'Socials'
+  colors = "Colors",
+  fonts = "Fonts",
+  socials = "Socials",
 }
 
 export type TCustomizeOption<TOption> = {
@@ -70,66 +79,66 @@ export const customizeOptions: TCustomizeOptions = {
     options: [
       {
         colorName: EColorNames.Twilight,
-        image: '/images/twilight.jpg'
+        image: "/images/twilight.jpg",
       },
       {
         colorName: EColorNames.Neon,
-        image: '/images/neon.jpg'
+        image: "/images/neon.jpg",
       },
       {
         colorName: EColorNames.Metallic,
-        image: '/images/metallic.jpg'
+        image: "/images/metallic.jpg",
       },
       {
         colorName: EColorNames.Navy,
-        image: '/images/navy.jpg'
+        image: "/images/navy.jpg",
       },
       {
         colorName: EColorNames.Brass,
-        image: '/images/brass.jpg'
-      }
-    ]
+        image: "/images/brass.jpg",
+      },
+    ],
   },
   [ECustomizeOptions.fonts]: {
     name: ECustomizeOptions.fonts,
     icon: Type,
     options: [
       {
-        fontName: EFontNames.Jakarta
+        fontName: EFontNames.Jakarta,
       },
       {
-        fontName: EFontNames.Inter
+        fontName: EFontNames.Inter,
       },
       {
-        fontName: EFontNames.Montserrat
+        fontName: EFontNames.Montserrat,
       },
       {
-        fontName: EFontNames.Space
+        fontName: EFontNames.Space,
       },
       {
-        fontName: EFontNames.Ubuntu
-      }
-    ]
+        fontName: EFontNames.Ubuntu,
+      },
+    ],
   },
   [ECustomizeOptions.socials]: {
     name: ECustomizeOptions.socials,
     icon: HeartHandshake,
     options: [
       {
-        socialName: ESocialNames.Facebook
+        socialName: ESocialNames.Facebook,
       },
       {
-        socialName: ESocialNames.X
+        socialName: ESocialNames.X,
       },
       {
-        socialName: ESocialNames.Discord
+        socialName: ESocialNames.Discord,
       },
       {
-        socialName: ESocialNames.Github
+        socialName: ESocialNames.Github,
       },
       {
-        socialName: ESocialNames.Instagram
-      }
-    ]
-  }
+        socialName: ESocialNames.Instagram,
+      },
+    ],
+  },
 };
