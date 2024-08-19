@@ -24,13 +24,6 @@ const CustomizeHero = dynamic(() => import("@/components/common/hero"), {
   ssr: false,
 });
 
-const CustomizeOptions = dynamic(() => import("./customize-options"), {
-  loading: () => (
-    <Skeleton className="h-[222px] w-full lg:h-[170px] md:h-[450px]" />
-  ),
-  ssr: false,
-});
-
 const CustomizeFooter = dynamic(() => import("./customize-footer"), {
   loading: () => <Skeleton className="h-[170px] w-full md:h-[220px]" />,
   ssr: false,
@@ -73,9 +66,6 @@ export default function Customize({
       </Row>
       <div className="h-10 md:h-10" />
       <Row>
-        <Col lg={3} md={2}>
-          <CustomizeOptions form={form} fonts={fonts} />
-        </Col>
         <Col lg={9} md={4}>
           <div className="h-8 lg:hidden md:hidden" />
           <Token

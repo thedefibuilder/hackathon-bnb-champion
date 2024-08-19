@@ -1,15 +1,13 @@
-"use client";
+import React from "react";
 
-import React, { useState } from "react";
-import Sidebar from "@/components/sidebar";
-import { DndContext } from "@dnd-kit/core";
+import { fetchGoogleFonts } from "@/lib/server-actions";
+import dynamic from "next/dynamic";
 
-export default function ManagePage() {
-  const [items, setItems] = useState(["sort-1", "sort-2", "sort-3", "sort-4"]);
+const Sidebar = dynamic(() => import("@/components/sidebar"), {
+  ssr: false,
+});
+export default async function ManagePage() {
+  const fonts = await fetchGoogleFonts();
 
-  return (
-    <DndContext>
-      <Sidebar />
-    </DndContext>
-  );
+  return <Sidebar fonts={fonts} />;
 }
