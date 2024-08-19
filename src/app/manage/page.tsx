@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
-import { DndContext, DragEndEvent, useDroppable } from "@dnd-kit/core";
+import React, { useState } from "react";
+import { DndContext, DragEndEvent } from "@dnd-kit/core";
 
 import Sidebar from "@/components/sidebar";
 import Canvas from "@/components/canvas";
 
-import { sidebarItemsArray } from "@/lib/sidebar-item";
-import { TCanvasItem } from "@/lib/canvas-items";
+import { canvasItemsMap, dropArea, TCanvasItem } from "@/lib/canvas-item";
 
 export default function ManagePage() {
   const [canvasItems, setCanvasItems] = useState<TCanvasItem[]>([]);
@@ -15,27 +14,22 @@ export default function ManagePage() {
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
-    if (over && over.id === addItemArea.id) {
+    if (over && over.id === dropArea.id) {
       const newItem = {
         id: active.id as string,
         index: canvasItems.length,
+        component: <div>{canvasItemsMap[active.id]?.component}</div>,
       };
-      setCanvasItems((prevItems) => [...prevItems, newItem]);
+
+      setCanvasItems((prev) => [...prev, newItem]);
     }
   };
-
-  const addItemArea: TCanvasItem = useMemo(() => {
-    return {
-      id: canvasItems.length.toString(),
-      index: canvasItems.length,
-    };
-  }, [canvasItems]);
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <Sidebar />
 
-      <Canvas canvasItems={canvasItems} addItemArea={addItemArea} />
+      <Canvas canvasItems={canvasItems} />
     </DndContext>
   );
 }

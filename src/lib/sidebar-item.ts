@@ -13,23 +13,23 @@ export type TSidebarItem = {
 };
 
 const sidebarItemsMap: Record<string, TSidebarItem> = {
-  "1": {
-    id: "1",
+  textEditor: {
+    id: "textEditor",
     title: "Text Block",
     icon: TextIcon,
   },
-  "2": {
-    id: "2",
+  image: {
+    id: "image",
     title: "Image",
     icon: ImageIcon,
   },
-  "3": {
-    id: "3",
+  button: {
+    id: "button",
     title: "Button",
     icon: SquarePlusIcon,
   },
-  "4": {
-    id: "4",
+  heading: {
+    id: "heading",
     title: "Heading",
     icon: HeadingIcon,
   },
