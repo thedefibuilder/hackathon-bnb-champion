@@ -2,7 +2,6 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import {
-  IconAlignJustified,
   IconBoxMargin,
   IconHeading,
   IconLayoutDashboard,
@@ -11,12 +10,18 @@ import {
   IconSquareRoundedPlus,
   IconTableOptions,
 } from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
-import { Col, Container, Row } from "../common/grid";
+import { Col, Row } from "../common/grid";
 import SidebarItem from "./sidebar-item";
 import SidebarSettings from "./sidebar-settings";
-import { DndContext } from "@dnd-kit/core";
 import { TFontItem } from "@/lib/server-actions";
+import {
+  sidebarButton,
+  sidebarContainer,
+  sidebarGrid,
+  sidebarHeading,
+  sidebarImage,
+  sidebarTextEditor,
+} from "@/lib/sidebar-item";
 
 type TabItem = {
   value: string;
@@ -36,53 +41,37 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
           <div className="h-3" />
           <Row>
             <Col>
-              <h2 className="text-s">Layout Components</h2>
+              <h2 className="text-s">Layout Elements</h2>
             </Col>
           </Row>
           <Row className="mb-4 mt-6">
             <Col lg={6}>
-              <SidebarItem
-                tablerIcon={IconBoxMargin}
-                title="Container"
-                id={"1"}
-              />
+              <SidebarItem item={sidebarContainer} />
             </Col>
             <Col lg={6}>
-              <SidebarItem
-                tablerIcon={IconLayoutDashboard}
-                title="Grid"
-                id={"2"}
-              />
+              <SidebarItem item={sidebarGrid} />
             </Col>
           </Row>
           <div className="h-3" />
           <Row>
             <Col>
-              <h2>Customize Components</h2>
+              <h2>Customize Elements</h2>
             </Col>
           </Row>
           <Row className="mb-4 mt-6">
             <Col lg={6}>
-              <SidebarItem
-                tablerIcon={IconAlignJustified}
-                title="Text Block"
-                id={"3"}
-              />
+              <SidebarItem item={sidebarHeading} />
             </Col>
             <Col lg={6}>
-              <SidebarItem tablerIcon={IconHeading} title="Heading" id={"4"} />
+              <SidebarItem item={sidebarImage} />
             </Col>
           </Row>
           <Row>
             <Col lg={6}>
-              <SidebarItem tablerIcon={IconPhoto} title="Image" id={"5"} />
+              <SidebarItem item={sidebarTextEditor} />
             </Col>
             <Col lg={6}>
-              <SidebarItem
-                tablerIcon={IconSquareRoundedPlus}
-                title="Button"
-                id={"6"}
-              />
+              <SidebarItem item={sidebarButton} />
             </Col>
           </Row>
         </>
@@ -96,35 +85,33 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
     },
   ];
   return (
-    <DndContext>
-      <aside className="top-18 fixed left-0 z-20 h-screen transition-all duration-500 ease-in-out lg:mt-4 md:h-[calc(100vh-70px)]">
-        <div className="relative flex h-full flex-col items-center shadow-md dark:shadow-zinc-800 lg:px-5 md:px-5">
-          <Tabs defaultValue="customize" className="w-full">
-            <TabsList className="w-full justify-between gap-4 bg-transparent">
-              {tabItems.map((tab) => (
-                <TabsTrigger
-                  key={tab.value}
-                  value={tab.value}
-                  className="flex items-center gap-3 rounded-none pb-4 data-[state=active]:border-b-[2px] data-[state=active]:border-primary"
-                >
-                  {tab.icon}
-                  {tab.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
+    <aside className="top-18 fixed left-0 z-20 h-screen transition-all duration-500 ease-in-out lg:mt-4 md:h-[calc(100vh-70px)]">
+      <div className="relative flex h-full flex-col items-center shadow-md dark:shadow-zinc-800 lg:px-5 md:px-5">
+        <Tabs defaultValue="customize" className="w-full">
+          <TabsList className="w-full justify-between gap-4 bg-transparent">
             {tabItems.map((tab) => (
-              <TabsContent
+              <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="w-[303px]"
+                className="flex items-center gap-3 rounded-none pb-4 data-[state=active]:border-b-[2px] data-[state=active]:border-primary"
               >
-                {tab.content}
-              </TabsContent>
+                {tab.icon}
+                {tab.label}
+              </TabsTrigger>
             ))}
-          </Tabs>
-        </div>
-      </aside>
-    </DndContext>
+          </TabsList>
+
+          {tabItems.map((tab) => (
+            <TabsContent
+              key={tab.value}
+              value={tab.value}
+              className="w-[303px]"
+            >
+              {tab.content}
+            </TabsContent>
+          ))}
+        </Tabs>
+      </div>
+    </aside>
   );
 }
