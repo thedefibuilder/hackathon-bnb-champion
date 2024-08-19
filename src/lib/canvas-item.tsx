@@ -1,4 +1,8 @@
 import DropArea from "@/components/canvas/drop-area";
+import ButtonItem from "@/components/canvas/items/button";
+import HeadingItem from "@/components/canvas/items/heading";
+import ImageItem from "@/components/canvas/items/image";
+import TextEditorItem from "@/components/canvas/items/text-editor";
 
 export type TCanvasItem = {
   id: string;
@@ -15,25 +19,25 @@ export const dropArea = {
 const heading = {
   id: "heading",
   index: 1,
-  component: <div>Heading</div>,
+  component: <HeadingItem />,
 };
 
 const textEditor = {
   id: "textEditor",
   index: 2,
-  component: <div>Text Editor</div>,
+  component: <TextEditorItem />,
 };
 
 const image = {
   id: "image",
   index: 3,
-  component: <div>Image</div>,
+  component: <ImageItem />,
 };
 
 const button = {
   id: "button",
   index: 4,
-  component: <div>Button</div>,
+  component: <ButtonItem />,
 };
 
 export const canvasItemsMap: Record<string, TCanvasItem> = {
