@@ -1,35 +1,14 @@
-"use client";
+import React from "react";
 
-import React, { useState } from "react";
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import { fetchGoogleFonts } from "@/lib/server-actions";
+import dynamic from "next/dynamic";
 
-import Sidebar from "@/components/sidebar";
-import Canvas from "@/components/canvas";
+const ManageClient = dynamic(() => import("@/components/manage/client"), {
+  ssr: false,
+});
 
-import { canvasItemsMap, dropArea, TCanvasItem } from "@/lib/canvas-item";
+export default async function ManagePage() {
+  const fonts = await fetchGoogleFonts();
 
-export default function ManagePage() {
-  const [canvasItems, setCanvasItems] = useState<TCanvasItem[]>([]);
-
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-
-    if (over && over.id === dropArea.id) {
-      const newItem = {
-        id: active.id as string,
-        index: canvasItems.length,
-        component: <div>{canvasItemsMap[active.id]?.component}</div>,
-      };
-
-      setCanvasItems((prev) => [...prev, newItem]);
-    }
-  };
-
-  return (
-    <DndContext onDragEnd={handleDragEnd}>
-      <Sidebar />
-
-      <Canvas canvasItems={canvasItems} setCanvasItems={setCanvasItems} />
-    </DndContext>
-  );
+  return <ManageClient fonts={fonts} />;
 }

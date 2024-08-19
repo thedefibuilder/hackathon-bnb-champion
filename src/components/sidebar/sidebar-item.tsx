@@ -20,16 +20,16 @@ export default function SidebarItem({ item }: SidebarItemProps) {
   return (
     <Card
       ref={setNodeRef}
-      className="h-[120px] w-[150px]"
+      className="jutify-center h flex flex-col items-center p-0 py-3 hover:bg-muted"
       style={style}
       {...listeners}
       {...attributes}
     >
-      <CardHeader>
+      <CardHeader className="p-0">
         <item.icon />
       </CardHeader>
-      <CardContent>
-        <CardDescription>{item.title}</CardDescription>
+      <CardContent className="p-0">
+        <CardDescription className="text-white">{item.title}</CardDescription>
       </CardContent>
     </Card>
   );

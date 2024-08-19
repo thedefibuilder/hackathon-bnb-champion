@@ -46,3 +46,10 @@ export const canvasItemsMap: Record<string, TCanvasItem> = {
   image,
   button,
 };
+
+export {
+  heading as headingItem,
+  textEditor as textEditorItem,
+  image as imageItem,
+  button as buttonItem,
+};

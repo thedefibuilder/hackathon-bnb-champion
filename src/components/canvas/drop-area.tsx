@@ -1,6 +1,5 @@
 import React from "react";
 
-import { useDroppable } from "@dnd-kit/core";
 import { PlusCircle } from "lucide-react";
 import DroppableSection from "./droppable-section";
 

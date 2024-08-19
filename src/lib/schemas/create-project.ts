@@ -67,3 +67,18 @@ export const tokenProjectSchema = z.object({
   projectName: z.string(),
   projectDescription: z.string(),
 });
+
+export const dappSetting = z.object({
+  domain: z.string().optional(),
+  colorOption: z.enum(colorNames).default(EColorNames.Brass),
+  fontOption: z.string(),
+  socialOption: z
+    .object({
+      [ESocialNames.Facebook]: z.string().url().optional(),
+      [ESocialNames.X]: z.string().url().optional(),
+      [ESocialNames.Discord]: z.string().url().optional(),
+      [ESocialNames.Github]: z.string().url().optional(),
+      [ESocialNames.Instagram]: z.string().url().optional(),
+    })
+    .optional(),
+});
