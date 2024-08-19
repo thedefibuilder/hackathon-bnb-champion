@@ -1,16 +1,14 @@
-import { LucideIcon } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader } from "../ui/card";
 import { useDraggable } from "@dnd-kit/core";
+import { TSidebarItem } from "@/lib/sidebar-item";
 
 type SidebarItemProps = {
-  lucideIcon: LucideIcon;
-  title: string;
-  id: string;
+  item: TSidebarItem;
 };
 
-export default function SidebarItem(props: SidebarItemProps) {
+export default function SidebarItem({ item }: SidebarItemProps) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: props.id,
+    id: item.id,
   });
 
   const style = {
@@ -28,10 +26,10 @@ export default function SidebarItem(props: SidebarItemProps) {
       {...attributes}
     >
       <CardHeader>
-        <props.lucideIcon />
+        <item.icon />
       </CardHeader>
       <CardContent>
-        <CardDescription>{props.title}</CardDescription>
+        <CardDescription>{item.title}</CardDescription>
       </CardContent>
     </Card>
   );

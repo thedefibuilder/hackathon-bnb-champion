@@ -1,15 +1,35 @@
 "use client";
 
 import React, { useState } from "react";
+import { DndContext, DragEndEvent } from "@dnd-kit/core";
+
 import Sidebar from "@/components/sidebar";
-import { DndContext } from "@dnd-kit/core";
+import Canvas from "@/components/canvas";
+
+import { canvasItemsMap, dropArea, TCanvasItem } from "@/lib/canvas-item";
 
 export default function ManagePage() {
-  const [items, setItems] = useState(["sort-1", "sort-2", "sort-3", "sort-4"]);
+  const [canvasItems, setCanvasItems] = useState<TCanvasItem[]>([]);
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (over && over.id === dropArea.id) {
+      const newItem = {
+        id: active.id as string,
+        index: canvasItems.length,
+        component: <div>{canvasItemsMap[active.id]?.component}</div>,
+      };
+
+      setCanvasItems((prev) => [...prev, newItem]);
+    }
+  };
 
   return (
-    <DndContext>
+    <DndContext onDragEnd={handleDragEnd}>
       <Sidebar />
+
+      <Canvas canvasItems={canvasItems} setCanvasItems={setCanvasItems} />
     </DndContext>
   );
 }
