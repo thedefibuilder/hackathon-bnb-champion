@@ -1,6 +1,5 @@
 import React from "react";
-import EditableSection from "../editable-section";
 
 export default function TextEditorItem() {
-  return <EditableSection id="textEditor">TextEditor</EditableSection>;
+  return <h3 id="textEditor">TextEditor</h3>;
 }

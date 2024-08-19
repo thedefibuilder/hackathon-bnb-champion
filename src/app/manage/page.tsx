@@ -29,7 +29,7 @@ export default function ManagePage() {
     <DndContext onDragEnd={handleDragEnd}>
       <Sidebar />
 
-      <Canvas canvasItems={canvasItems} />
+      <Canvas canvasItems={canvasItems} setCanvasItems={setCanvasItems} />
     </DndContext>
   );
 }
