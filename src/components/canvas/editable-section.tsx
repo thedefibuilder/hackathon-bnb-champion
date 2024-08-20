@@ -3,9 +3,9 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CircleXIcon, MoveIcon } from "lucide-react";
 import { CSS } from "@dnd-kit/utilities";
 
-type TEditablSectionProps = {
+export type TEditableSectionProps = {
   id: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onRemove: (id: string) => void;
 };
 
@@ -13,7 +13,7 @@ export default function EditableSection({
   id,
   children,
   onRemove,
-}: TEditablSectionProps) {
+}: TEditableSectionProps) {
   const {
     attributes,
     listeners,

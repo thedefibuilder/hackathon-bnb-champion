@@ -1,51 +1,53 @@
 import {
-  HeadingIcon,
-  ImageIcon,
-  LucideIcon,
-  SquarePlusIcon,
-  TextIcon,
-} from "lucide-react";
+  IconAlignJustified,
+  IconBoxPadding,
+  IconHeading,
+  IconLayoutDashboard,
+  IconPhoto,
+  IconSquareRoundedPlus,
+  TablerIcon,
+} from "@tabler/icons-react";
 
 export type TSidebarItem = {
   id: string;
   title: string;
-  icon: LucideIcon;
+  icon: TablerIcon;
 };
 
 const textEditor = {
   id: "textEditor",
   title: "Text Block",
-  icon: TextIcon,
+  icon: IconAlignJustified,
 };
 
 const image = {
   id: "image",
   title: "Image",
-  icon: ImageIcon,
+  icon: IconPhoto,
 };
 
 const button = {
   id: "button",
   title: "Button",
-  icon: SquarePlusIcon,
+  icon: IconSquareRoundedPlus,
 };
 
 const heading = {
   id: "heading",
   title: "Heading",
-  icon: HeadingIcon,
+  icon: IconHeading,
 };
 
 const container = {
   id: "container",
   title: "Container",
-  icon: SquarePlusIcon,
+  icon: IconBoxPadding,
 };
 
 const grid = {
   id: "grid",
   title: "Grid",
-  icon: SquarePlusIcon,
+  icon: IconLayoutDashboard,
 };
 
 const sidebarItemsMap: Record<string, TSidebarItem> = {
@@ -53,6 +55,8 @@ const sidebarItemsMap: Record<string, TSidebarItem> = {
   image,
   button,
   heading,
+  container,
+  grid,
 } as const;
 
 const sidebarItemsArray = Object.values(sidebarItemsMap);
