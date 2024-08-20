@@ -1,6 +1,11 @@
 "use client";
 
-import { TCanvasItem, canvasItemsMap, dropArea } from "@/lib/canvas-item";
+import {
+  TCanvasItem,
+  canvasItemsMap,
+  dropArea,
+  generateCanvasId,
+} from "@/lib/canvas-item";
 import { DragEndEvent, DndContext } from "@dnd-kit/core";
 import React, { useState } from "react";
 import Canvas from "../canvas";
@@ -19,7 +24,7 @@ export default function ManageClient({ fonts }: TManageClientProps) {
 
     if (over && over.id === dropArea.id) {
       const newItem = {
-        id: active.id as string,
+        id: generateCanvasId(active.id),
         index: canvasItems.length,
         component: <div>{canvasItemsMap[active.id]?.component}</div>,
       };

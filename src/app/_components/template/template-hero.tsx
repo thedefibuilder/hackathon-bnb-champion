@@ -13,6 +13,7 @@ import {
 import BannerContainer from "@/components/common/banner-container";
 import { Col, Row } from "@/components/common/grid";
 import { Input } from "@/components/ui/input";
+import WordRotate from "@/components/magicui/word-rotate";
 
 export default function TemplateHero() {
   return (
@@ -28,8 +29,20 @@ export default function TemplateHero() {
           />
           <div className="w-full text-white">
             <div className="h-6" />
-            <h1 className="text-3xl font-bold lg:w-full sm:text-2xl xl:text-4xl">
-              Your Web3 App delivered in minutes
+            <h1 className="text-2xl font-bold lg:w-full sm:text-2xl xl:text-4xl">
+              Your{" "}
+              <span className="text-primary">
+                <WordRotate
+                  className="text-3xl font-extrabold lg:w-full sm:text-2xl xl:text-4xl"
+                  words={[
+                    "Web3 Blog",
+                    "Token Page",
+                    "NFT Collection",
+                    "DAO Platform",
+                  ]}
+                />{" "}
+              </span>
+              delivered in minutes
             </h1>
             <div className="h-4 md:h-6" />
             <FormField
