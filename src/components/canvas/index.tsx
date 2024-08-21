@@ -45,11 +45,19 @@ export default function Canvas({ canvasItems, setCanvasItems }: TCanvasProps) {
   return (
     <div className="fixed right-0 h-screen w-2/3 p-4">
       <div className="fixed right-4 mt-4 flex items-center gap-4">
-        <Button className="flex items-center gap-3" variant="outline">
+        <Button
+          className="flex items-center gap-3"
+          variant="outline"
+          type="button"
+        >
           Save Draft
           <IconFile />
         </Button>
-        <Button className="flex items-center gap-3" variant="default">
+        <Button
+          className="flex items-center gap-3"
+          variant="default"
+          type="submit"
+        >
           Publish
           <IconFileCheck />
         </Button>
@@ -57,7 +65,7 @@ export default function Canvas({ canvasItems, setCanvasItems }: TCanvasProps) {
 
       <div className="h-32" />
 
-      <div className="ml-40 flex w-5/6 items-center justify-center">
+      <div className="flex w-5/6 items-center justify-center">
         <Container className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1">
           <DndContext onDragEnd={handleDragEnd}>
             <SortableContext items={canvasItems.map((item) => item.id)}>
@@ -74,6 +82,8 @@ export default function Canvas({ canvasItems, setCanvasItems }: TCanvasProps) {
               </ul>
             </SortableContext>
           </DndContext>
+
+          <DropArea />
         </Container>
       </div>
     </div>

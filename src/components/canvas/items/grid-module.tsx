@@ -137,10 +137,6 @@ export default function GridModule({ id, onRemove }: TEditableSectionProps) {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-      <IconXboxX
-        className="h-6 w-6 hover:text-destructive"
-        onClick={() => onRemove(id)}
-      />
     </>
   );
 }

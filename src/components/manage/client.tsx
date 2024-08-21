@@ -16,6 +16,7 @@ import { useForm, FormProvider } from "react-hook-form";
 type TManageClientProps = {
   fonts: TFontItem[];
 };
+
 type TFormValues = {
   items: {
     grid: {
@@ -26,6 +27,7 @@ type TFormValues = {
     };
   };
 };
+
 export default function ManageClient({ fonts }: TManageClientProps) {
   const defaultValues: TFormValues = {
     items: {
@@ -38,8 +40,7 @@ export default function ManageClient({ fonts }: TManageClientProps) {
     },
   };
 
-  const methods = useForm<TFormValues>({ defaultValues });
-  const { handleSubmit, register } = methods;
+  const form = useForm<TFormValues>({ defaultValues });
 
   const [canvasItems, setCanvasItems] = useState<TCanvasItem[]>([]);
 
@@ -64,6 +65,7 @@ export default function ManageClient({ fonts }: TManageClientProps) {
       };
     }
   };
+
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
@@ -87,10 +89,11 @@ export default function ManageClient({ fonts }: TManageClientProps) {
   };
 
   return (
-    <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <FormProvider {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         <DndContext onDragEnd={handleDragEnd}>
           <Sidebar fonts={fonts} />
+
           <Canvas canvasItems={canvasItems} setCanvasItems={setCanvasItems} />
         </DndContext>
       </form>
