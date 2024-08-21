@@ -25,9 +25,8 @@ export default function Canvas({ canvasItems, setCanvasItems }: TCanvasProps) {
 
     if (over && over.id !== active.id) {
       setCanvasItems((items) => {
-        // swap items
-        const oldIndex = items.findIndex((item) => item.id === active.id);
-        const newIndex = items.findIndex((item) => item.id === over.id);
+        const oldIndex = active.data.current?.sortable.index as number;
+        const newIndex = over.data.current?.sortable.index as number;
 
         const updatedItems = [...items];
         const [movedItem] = updatedItems.splice(oldIndex, 1);

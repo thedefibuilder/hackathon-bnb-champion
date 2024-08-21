@@ -4,7 +4,7 @@ import { MoveIcon } from "lucide-react";
 import { CSS } from "@dnd-kit/utilities";
 import { IconXboxX } from "@tabler/icons-react";
 
-import GridModule from "./items/grid-module";
+import GridSettingsDialog from "./items/grid-settings-dialog";
 
 export type TEditableSectionProps = {
   id: string;
@@ -41,10 +41,13 @@ export default function EditableSection({
         {children}
 
         <div className="absolute -right-8 -top-4 flex gap-3 rounded-[14px] bg-muted p-2">
-          <GridModule id={id} onRemove={onRemove} />
+          {/* TODO map the dialog component */}
+          <GridSettingsDialog id={id} onRemove={onRemove} />
+
           <button
             className="h-6 w-6 hover:text-secondary"
             ref={setActivatorNodeRef}
+            type="button"
             {...listeners}
           >
             <MoveIcon className="h-6 w-6" />

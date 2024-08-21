@@ -1,9 +1,7 @@
 import React from "react";
 import { Col, Row } from "@/components/common/grid";
 import { useFormContext } from "react-hook-form";
-import EditableSection, { TEditableSectionProps } from "../editable-section";
-import Canvas, { TCanvasProps } from "..";
-import GridModule from "./grid-module";
+import { TCanvasProps } from "..";
 
 const lgValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 

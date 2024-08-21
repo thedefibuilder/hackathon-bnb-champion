@@ -9,6 +9,7 @@ type SidebarItemProps = {
 export default function SidebarItem({ item }: SidebarItemProps) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: item.id,
+    data: { widgetName: item.widgetName },
   });
 
   const style = {

@@ -5,79 +5,79 @@ import GridItem from "@/components/canvas/items/grid";
 import HeadingItem from "@/components/canvas/items/heading";
 import ImageItem from "@/components/canvas/items/image";
 import TextEditorItem from "@/components/canvas/items/text-editor";
-import { UniqueIdentifier } from "@dnd-kit/core";
+import { EWidgetName } from "./widgets";
 
 export type TCanvasItem =
   | {
       id: string;
-      index: number;
       component: (props: TCanvasProps) => JSX.Element;
+      widgetName: EWidgetName;
       requiresProps: true;
     }
   | {
       id: string;
-      index: number;
       component: () => JSX.Element;
+      widgetName: EWidgetName;
+
       requiresProps: false;
     };
 
 export const dropArea: TCanvasItem = {
   id: "drop-area",
-  index: 0,
   component: () => <DropArea />,
+  widgetName: EWidgetName.dropArea,
   requiresProps: false,
 };
 
 const heading: TCanvasItem = {
   id: "heading",
-  index: 1,
   component: () => <HeadingItem />,
+  widgetName: EWidgetName.heading,
   requiresProps: false,
 };
 
 const grid: TCanvasItem = {
   id: "grid",
-  index: 2,
   component: ({ canvasItems, setCanvasItems }: TCanvasProps) => (
     <GridItem canvasItems={canvasItems} setCanvasItems={setCanvasItems} />
   ),
+  widgetName: EWidgetName.grid,
   requiresProps: true,
 };
 
 const textEditor: TCanvasItem = {
-  id: "text-editor",
-  index: 4,
+  id: "textEditor",
   component: () => <TextEditorItem />,
+  widgetName: EWidgetName.textEditor,
   requiresProps: false,
 };
 
 const image: TCanvasItem = {
   id: "image",
-  index: 5,
   component: () => <ImageItem />,
+  widgetName: EWidgetName.image,
   requiresProps: false,
 };
 
 const button: TCanvasItem = {
   id: "button",
-  index: 6,
   component: () => <ButtonItem />,
+  widgetName: EWidgetName.button,
   requiresProps: false,
 };
 
-export const canvasItemsMap: Record<string, TCanvasItem> = {
-  heading,
-  textEditor,
-  image,
-  button,
-  grid,
+const canvasItemsMap: Record<EWidgetName, TCanvasItem> = {
+  [EWidgetName.dropArea]: dropArea,
+  [EWidgetName.heading]: heading,
+  [EWidgetName.textEditor]: textEditor,
+  [EWidgetName.image]: image,
+  [EWidgetName.button]: button,
+  [EWidgetName.grid]: grid,
+  [EWidgetName.container]: grid, // todo change for container
 };
 
-export function generateCanvasId(itemId: UniqueIdentifier) {
-  return `${itemId}_canvas_${Date.now()}`;
-}
-
 export {
+  canvasItemsMap,
   heading as canvasHeading,
   textEditor as canvasTextEditor,
   image as canvasImage,

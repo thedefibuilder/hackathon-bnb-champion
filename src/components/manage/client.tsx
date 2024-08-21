@@ -1,17 +1,13 @@
 "use client";
 
-import {
-  TCanvasItem,
-  canvasItemsMap,
-  dropArea,
-  generateCanvasId,
-} from "@/lib/canvas-item";
+import { TCanvasItem, canvasItemsMap } from "@/lib/canvas-item";
 import { DragEndEvent, DndContext } from "@dnd-kit/core";
 import React, { useState } from "react";
 import Canvas, { TCanvasProps } from "../canvas";
 import { TFontItem } from "@/lib/server-actions";
 import Sidebar from "../sidebar";
 import { useForm, FormProvider } from "react-hook-form";
+import { EWidgetName, generateRandomId } from "@/lib/widgets";
 
 type TManageClientProps = {
   fonts: TFontItem[];
@@ -44,40 +40,18 @@ export default function ManageClient({ fonts }: TManageClientProps) {
 
   const [canvasItems, setCanvasItems] = useState<TCanvasItem[]>([]);
 
-  const createCanvasItem = (
-    id: string,
-    index: number,
-    item: TCanvasItem,
-  ): TCanvasItem => {
-    if (item.requiresProps) {
-      return {
-        id,
-        index,
-        component: (props: TCanvasProps) => item.component(props),
-        requiresProps: true,
-      };
-    } else {
-      return {
-        id,
-        index,
-        component: item.component,
-        requiresProps: false,
-      };
-    }
-  };
-
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
-    if (over && over.id === dropArea.id) {
-      const item = canvasItemsMap[active.id as string];
+    if (over && over.data.current?.widgetName === EWidgetName.dropArea) {
+      const item =
+        canvasItemsMap[active.data.current?.widgetName as EWidgetName];
 
       if (item) {
-        const newItem = createCanvasItem(
-          generateCanvasId(active.id),
-          canvasItems.length,
-          item,
-        );
+        const newItem = {
+          ...item,
+          id: generateRandomId(),
+        };
 
         setCanvasItems((prevItems) => [...prevItems, newItem]);
       }

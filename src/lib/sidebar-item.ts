@@ -7,56 +7,64 @@ import {
   IconSquareRoundedPlus,
   TablerIcon,
 } from "@tabler/icons-react";
+import { EWidgetName } from "./widgets";
 
 export type TSidebarItem = {
   id: string;
+  widgetName: EWidgetName;
   title: string;
   icon: TablerIcon;
 };
 
 const textEditor = {
-  id: "textEditor",
+  id: "",
+  widgetName: EWidgetName.textEditor,
   title: "Text Block",
   icon: IconAlignJustified,
 };
 
 const image = {
-  id: "image",
+  id: "",
+  widgetName: EWidgetName.image,
   title: "Image",
   icon: IconPhoto,
 };
 
 const button = {
-  id: "button",
+  id: "",
+  widgetName: EWidgetName.button,
   title: "Button",
   icon: IconSquareRoundedPlus,
 };
 
 const heading = {
-  id: "heading",
+  id: "",
+  widgetName: EWidgetName.heading,
   title: "Heading",
   icon: IconHeading,
 };
 
 const container = {
-  id: "container",
+  id: "",
+  widgetName: EWidgetName.container,
   title: "Container",
   icon: IconBoxPadding,
 };
 
 const grid = {
-  id: "grid",
+  id: "",
+  widgetName: EWidgetName.grid,
   title: "Grid",
   icon: IconLayoutDashboard,
 };
 
-const sidebarItemsMap: Record<string, TSidebarItem> = {
-  textEditor,
-  image,
-  button,
-  heading,
-  container,
-  grid,
+const sidebarItemsMap: Partial<Record<EWidgetName, TSidebarItem>> = {
+  [EWidgetName.textEditor]: textEditor,
+  [EWidgetName.image]: image,
+  [EWidgetName.button]: button,
+  [EWidgetName.heading]: heading,
+  [EWidgetName.container]: container,
+  [EWidgetName.grid]: grid,
 } as const;
 
 const sidebarItemsArray = Object.values(sidebarItemsMap);
