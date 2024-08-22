@@ -42,7 +42,7 @@ export default function EditableSection({
 
         <div className="absolute -right-8 -top-4 flex gap-3 rounded-[14px] bg-muted p-2">
           {/* TODO map the dialog component */}
-          <GridSettingsDialog id={id} onRemove={onRemove} />
+          <GridSettingsDialog id={id} />
 
           <button
             className="h-6 w-6 hover:text-secondary"

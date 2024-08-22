@@ -1,51 +1,36 @@
 "use client";
 
-import { TCanvasItem, canvasItemsMap } from "@/lib/canvas-item";
+import { TCanvasForm, TCanvasItem, canvasItemsMap } from "@/lib/canvas-item";
 import { DragEndEvent, DndContext } from "@dnd-kit/core";
-import React, { useState } from "react";
-import Canvas, { TCanvasProps } from "../canvas";
+import React, { useMemo, useState } from "react";
+import Canvas from "../canvas";
 import { TFontItem } from "@/lib/server-actions";
 import Sidebar from "../sidebar";
 import { useForm, FormProvider } from "react-hook-form";
-import { EWidgetName, generateRandomId } from "@/lib/widgets";
+import { EItemName, generateRandomId } from "@/lib/items";
+import { SortableContext } from "@dnd-kit/sortable";
 
 type TManageClientProps = {
   fonts: TFontItem[];
 };
 
-type TFormValues = {
-  items: {
-    grid: {
-      row: string;
-      col: string;
-      gapColumns: string;
-      gapRows: string;
-    };
-  };
-};
-
 export default function ManageClient({ fonts }: TManageClientProps) {
-  const defaultValues: TFormValues = {
-    items: {
-      grid: {
-        row: "1",
-        col: "2",
-        gapColumns: "0",
-        gapRows: "0",
-      },
-    },
-  };
-
-  const form = useForm<TFormValues>({ defaultValues });
-
-  const [canvasItems, setCanvasItems] = useState<TCanvasItem[]>([]);
+  const form = useForm<TCanvasForm>();
+  const [canvasItemsOrder, setCanvasItemsOrder] = useState<string[]>([]);
+  const canvasItems = useMemo(
+    () =>
+      canvasItemsOrder
+        .map((id) => form.getValues(id))
+        .filter((item) => item !== undefined),
+    [form.watch(), canvasItemsOrder],
+  );
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
-    if (over && over.data.current?.widgetName === EWidgetName.dropArea) {
-      const item =
-        canvasItemsMap[active.data.current?.widgetName as EWidgetName];
+    // If the item is dropped over the drop area, add it to the canvas
+    if (over && over.data.current?.itemName === EItemName.dropArea) {
+      const item = canvasItemsMap[active.data.current?.itemName as EItemName];
 
       if (item) {
         const newItem = {
@@ -53,7 +38,22 @@ export default function ManageClient({ fonts }: TManageClientProps) {
           id: generateRandomId(),
         };
 
-        setCanvasItems((prevItems) => [...prevItems, newItem]);
+        form.setValue(newItem.id, newItem);
+        setCanvasItemsOrder((items) => [...items, newItem.id]);
+      }
+    }
+
+    // If the item is dropped over another item, reorder the items
+    if (over && over.id !== active.id && over.data.current?.sortable) {
+      const oldIndex = active.data.current?.sortable.index;
+      const newIndex = over.data.current?.sortable.index;
+
+      if (oldIndex !== -1 && newIndex !== -1) {
+        const updatedOrder = [...canvasItemsOrder];
+        const [movedId] = updatedOrder.splice(oldIndex, 1);
+        updatedOrder.splice(newIndex, 0, movedId!);
+
+        setCanvasItemsOrder(updatedOrder);
       }
     }
   };
@@ -68,7 +68,12 @@ export default function ManageClient({ fonts }: TManageClientProps) {
         <DndContext onDragEnd={handleDragEnd}>
           <Sidebar fonts={fonts} />
 
-          <Canvas canvasItems={canvasItems} setCanvasItems={setCanvasItems} />
+          <SortableContext items={canvasItemsOrder}>
+            <Canvas
+              canvasItems={canvasItems}
+              onRemove={(id) => form.setValue(id, undefined)}
+            />
+          </SortableContext>
         </DndContext>
       </form>
     </FormProvider>

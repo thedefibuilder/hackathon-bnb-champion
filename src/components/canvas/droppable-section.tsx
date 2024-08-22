@@ -1,4 +1,4 @@
-import { EWidgetName, generateRandomId } from "@/lib/widgets";
+import { EItemName } from "@/lib/items";
 import { useDroppable } from "@dnd-kit/core";
 import React from "react";
 
@@ -13,7 +13,7 @@ export default function DroppableSection({
 }: TDroppableSectionProps) {
   const { setNodeRef, isOver } = useDroppable({
     id,
-    data: { widgetName: EWidgetName.dropArea },
+    data: { itemName: EItemName.dropArea },
   });
 
   return (

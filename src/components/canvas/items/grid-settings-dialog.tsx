@@ -5,7 +5,6 @@ import {
   IconAlignLeft,
   IconAlignRight,
   IconSettings,
-  IconXboxX,
 } from "@tabler/icons-react";
 
 import { useFormContext } from "react-hook-form";
@@ -16,19 +15,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { TEditableSectionProps } from "../editable-section";
 import { Slider } from "@/components/ui/slider";
+import { TCanvasForm } from "@/lib/canvas-item";
 
-export default function GridSettingsDialog({
-  id,
-  onRemove,
-}: TEditableSectionProps) {
-  const { register, setValue, watch } = useFormContext();
+type TGridSettingsDialogProps = {
+  id: string;
+};
 
-  const rowValue = watch(`items[${id}].row`, 1);
-  const colValue = watch(`items[${id}].col`, 1);
-  const gapColumns = watch(`items[${id}].gapColumns`, 0);
-  const gapRows = watch(`items[${id}].gapRows`, 0);
+export default function GridSettingsDialog({ id }: TGridSettingsDialogProps) {
+  const { register, setValue, watch } = useFormContext<TCanvasForm>();
+
+  const canvasItem = watch(id);
+  const rowValue = canvasItem?.settings.row || 1;
+  const colValue = canvasItem?.settings.col || 1;
+  const gapColumns = canvasItem?.settings.gapColumns || 0;
+  const gapRows = canvasItem?.settings.gapRows || 0;
 
   return (
     <Dialog>
@@ -48,14 +49,14 @@ export default function GridSettingsDialog({
                 max={100}
                 step={1}
                 onValueChange={(value) =>
-                  setValue(`items[${id}].row`, value[0])
+                  setValue(`${id}.settings.row`, value[0])
                 }
               />
               <Input
-                {...register(`items[${id}].row`)}
+                {...register(`${id}.settings.row`)}
                 value={rowValue}
                 onChange={(e) =>
-                  setValue(`items[${id}].row`, Number(e.target.value))
+                  setValue(`${id}.settings.row`, Number(e.target.value))
                 }
               />
             </div>
@@ -69,14 +70,14 @@ export default function GridSettingsDialog({
                 max={100}
                 step={1}
                 onValueChange={(value) =>
-                  setValue(`items[${id}].col`, value[0])
+                  setValue(`${id}.settings.col`, value[0])
                 }
               />
               <Input
-                {...register(`items[${id}].col`)}
+                {...register(`${id}.settings.col`)}
                 value={colValue}
                 onChange={(e) =>
-                  setValue(`items[${id}].col`, Number(e.target.value))
+                  setValue(`${id}.settings.col`, Number(e.target.value))
                 }
               />
             </div>
@@ -88,10 +89,13 @@ export default function GridSettingsDialog({
             <div className="flex items-center gap-4">
               <div className="w-full">
                 <Input
-                  {...register(`items[${id}].gapColumns`)}
+                  {...register(`${id}.settings.gapColumns`)}
                   value={gapColumns}
                   onChange={(e) =>
-                    setValue(`items[${id}].gapColumns`, Number(e.target.value))
+                    setValue(
+                      `${id}.settings.gapColumns`,
+                      Number(e.target.value),
+                    )
                   }
                 />
                 <div className="h-2" />
@@ -99,10 +103,10 @@ export default function GridSettingsDialog({
               </div>
               <div className="w-full">
                 <Input
-                  {...register(`items[${id}].gapRows`)}
+                  {...register(`${id}.settings.gapRows`)}
                   value={gapRows}
                   onChange={(e) =>
-                    setValue(`items[${id}].gapRows`, Number(e.target.value))
+                    setValue(`${id}.settings.gapRows`, Number(e.target.value))
                   }
                 />
                 <div className="h-2" />

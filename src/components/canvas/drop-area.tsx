@@ -2,7 +2,7 @@ import React from "react";
 
 import { PlusCircle } from "lucide-react";
 import DroppableSection from "./droppable-section";
-import { generateRandomId } from "@/lib/widgets";
+import { generateRandomId } from "@/lib/items";
 
 export default function DropArea() {
   return (

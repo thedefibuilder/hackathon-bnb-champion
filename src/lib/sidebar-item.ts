@@ -7,64 +7,64 @@ import {
   IconSquareRoundedPlus,
   TablerIcon,
 } from "@tabler/icons-react";
-import { EWidgetName } from "./widgets";
+import { EItemName } from "./items";
 
 export type TSidebarItem = {
   id: string;
-  widgetName: EWidgetName;
+  itemName: EItemName;
   title: string;
   icon: TablerIcon;
 };
 
 const textEditor = {
   id: "",
-  widgetName: EWidgetName.textEditor,
+  itemName: EItemName.textEditor,
   title: "Text Block",
   icon: IconAlignJustified,
 };
 
 const image = {
   id: "",
-  widgetName: EWidgetName.image,
+  itemName: EItemName.image,
   title: "Image",
   icon: IconPhoto,
 };
 
 const button = {
   id: "",
-  widgetName: EWidgetName.button,
+  itemName: EItemName.button,
   title: "Button",
   icon: IconSquareRoundedPlus,
 };
 
 const heading = {
   id: "",
-  widgetName: EWidgetName.heading,
+  itemName: EItemName.heading,
   title: "Heading",
   icon: IconHeading,
 };
 
 const container = {
   id: "",
-  widgetName: EWidgetName.container,
+  itemName: EItemName.container,
   title: "Container",
   icon: IconBoxPadding,
 };
 
 const grid = {
   id: "",
-  widgetName: EWidgetName.grid,
+  itemName: EItemName.grid,
   title: "Grid",
   icon: IconLayoutDashboard,
 };
 
-const sidebarItemsMap: Partial<Record<EWidgetName, TSidebarItem>> = {
-  [EWidgetName.textEditor]: textEditor,
-  [EWidgetName.image]: image,
-  [EWidgetName.button]: button,
-  [EWidgetName.heading]: heading,
-  [EWidgetName.container]: container,
-  [EWidgetName.grid]: grid,
+const sidebarItemsMap: Partial<Record<EItemName, TSidebarItem>> = {
+  [EItemName.textEditor]: textEditor,
+  [EItemName.image]: image,
+  [EItemName.button]: button,
+  [EItemName.heading]: heading,
+  [EItemName.container]: container,
+  [EItemName.grid]: grid,
 } as const;
 
 const sidebarItemsArray = Object.values(sidebarItemsMap);
