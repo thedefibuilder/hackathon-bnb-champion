@@ -1,58 +1,70 @@
 import {
-  HeadingIcon,
-  ImageIcon,
-  LucideIcon,
-  SquarePlusIcon,
-  TextIcon,
-} from "lucide-react";
+  IconAlignJustified,
+  IconBoxPadding,
+  IconHeading,
+  IconLayoutDashboard,
+  IconPhoto,
+  IconSquareRoundedPlus,
+  TablerIcon,
+} from "@tabler/icons-react";
+import { EItemName } from "./items";
 
 export type TSidebarItem = {
   id: string;
+  itemName: EItemName;
   title: string;
-  icon: LucideIcon;
+  icon: TablerIcon;
 };
 
 const textEditor = {
-  id: "textEditor",
+  id: "",
+  itemName: EItemName.textEditor,
   title: "Text Block",
-  icon: TextIcon,
+  icon: IconAlignJustified,
 };
 
 const image = {
-  id: "image",
+  id: "",
+  itemName: EItemName.image,
   title: "Image",
-  icon: ImageIcon,
+  icon: IconPhoto,
 };
 
 const button = {
-  id: "button",
+  id: "",
+  itemName: EItemName.button,
   title: "Button",
-  icon: SquarePlusIcon,
+  icon: IconSquareRoundedPlus,
 };
 
 const heading = {
-  id: "heading",
+  id: "",
+  itemName: EItemName.heading,
   title: "Heading",
-  icon: HeadingIcon,
+  icon: IconHeading,
 };
 
 const container = {
-  id: "container",
+  id: "",
+  itemName: EItemName.container,
   title: "Container",
-  icon: SquarePlusIcon,
+  icon: IconBoxPadding,
 };
 
 const grid = {
-  id: "grid",
+  id: "",
+  itemName: EItemName.grid,
   title: "Grid",
-  icon: SquarePlusIcon,
+  icon: IconLayoutDashboard,
 };
 
-const sidebarItemsMap: Record<string, TSidebarItem> = {
-  textEditor,
-  image,
-  button,
-  heading,
+const sidebarItemsMap: Partial<Record<EItemName, TSidebarItem>> = {
+  [EItemName.textEditor]: textEditor,
+  [EItemName.image]: image,
+  [EItemName.button]: button,
+  [EItemName.heading]: heading,
+  [EItemName.container]: container,
+  [EItemName.grid]: grid,
 } as const;
 
 const sidebarItemsArray = Object.values(sidebarItemsMap);
