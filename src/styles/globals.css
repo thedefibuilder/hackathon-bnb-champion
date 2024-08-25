@@ -109,3 +109,16 @@
 /* * {
   border: 1px solid red;
 } */
+.rdw-dropdownoption-default {
+  color: black;
+}
+.rdw-dropdown-selectedtext {
+  color: black;
+}
+.public-DraftStyleDefault-block {
+  background: white;
+  height: 150px;
+  border-radius: 4px;
+  color: black;
+  padding: 10px;
+}

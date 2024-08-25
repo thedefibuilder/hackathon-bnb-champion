@@ -66,14 +66,20 @@ export default function ManageClient({ fonts }: TManageClientProps) {
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <DndContext onDragEnd={handleDragEnd}>
-          <Sidebar fonts={fonts} />
+          <div className="flex">
+            <aside className="w-80">
+              <Sidebar fonts={fonts} />
+            </aside>
 
-          <SortableContext items={canvasItemsOrder}>
-            <Canvas
-              canvasItems={canvasItems}
-              onRemove={(id) => form.setValue(id, undefined)}
-            />
-          </SortableContext>
+            <main className="flex-grow">
+              <SortableContext items={canvasItemsOrder}>
+                <Canvas
+                  canvasItems={canvasItems}
+                  onRemove={(id) => form.setValue(id, undefined)}
+                />
+              </SortableContext>
+            </main>
+          </div>
         </DndContext>
       </form>
     </FormProvider>
