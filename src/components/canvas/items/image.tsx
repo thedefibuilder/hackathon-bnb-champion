@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import {
   useFormContext,
-  type Control,
   type FieldValues,
-  type Path,
   type UseFormClearErrors,
   type UseFormSetError,
   type UseFormSetValue,
@@ -67,38 +65,36 @@ export default function ImageItem<TFormSchema extends FieldValues>({
   }
 
   return (
-    <>
-      <FormField
-        control={control}
-        name={`${id}.settings.name`}
-        render={() => (
-          <FormItem>
-            <div className="flex items-center gap-x-1">
-              <FormLabel>Update Image</FormLabel>
-              <FormMessage className="leading-none" />
-            </div>
-            <FormControl>
-              {imagePreview ? (
-                <div className="mt-4">
-                  <img
-                    src={imagePreview}
-                    alt={name}
-                    className="max-w-full"
-                    width={imageWidth}
-                    height={imageHeight}
-                  />
-                </div>
-              ) : (
-                <Input
-                  type="file"
-                  className="h-20 placeholder:italic"
-                  onChange={onUpload}
+    <FormField
+      control={control}
+      name={`${id}.settings.name`}
+      render={() => (
+        <FormItem>
+          <div className="flex items-center gap-x-1">
+            <FormLabel>Update Image</FormLabel>
+            <FormMessage className="leading-none" />
+          </div>
+          <FormControl>
+            {imagePreview ? (
+              <div className="mt-4">
+                <img
+                  src={imagePreview}
+                  alt={name}
+                  className="max-w-full"
+                  width={imageWidth}
+                  height={imageHeight}
                 />
-              )}
-            </FormControl>
-          </FormItem>
-        )}
-      />
-    </>
+              </div>
+            ) : (
+              <Input
+                type="file"
+                className="h-20 placeholder:italic"
+                onChange={onUpload}
+              />
+            )}
+          </FormControl>
+        </FormItem>
+      )}
+    />
   );
 }

@@ -8,8 +8,7 @@ import { cn } from "@/lib/utils";
 export default function ButtonItem<TFormSchema extends FieldValues>({
   id,
 }: TControlledFormFileInput<TFormSchema>) {
-  const { control, setValue, watch } = useFormContext<TCanvasForm>();
-  console.log(watch());
+  const { watch } = useFormContext<TCanvasForm>();
 
   const buttonItems = watch(id);
   const buttonText = buttonItems?.settings?.text || "Default Text";

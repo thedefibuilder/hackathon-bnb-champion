@@ -37,15 +37,13 @@ export default function TextEditorItem<TFormSchema extends FieldValues>({
         name={id}
         control={control}
         render={({ field }) => (
-          <>
-            <Editor
-              editorState={editorState}
-              toolbarClassName="my-toolbar-class"
-              wrapperClassName="my-wrapper-class"
-              editorClassName="my-editor-class"
-              onEditorStateChange={handleEditorStateChange}
-            />
-          </>
+          <Editor
+            editorState={editorState}
+            toolbarClassName="my-toolbar-class"
+            wrapperClassName="my-wrapper-class"
+            editorClassName="my-editor-class"
+            onEditorStateChange={handleEditorStateChange}
+          />
         )}
       />
     </div>
