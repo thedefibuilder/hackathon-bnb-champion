@@ -15,8 +15,8 @@ export type TCanvasProps = {
 
 export default function Canvas({ canvasItems, onRemove }: TCanvasProps) {
   return (
-    <div className="fixed right-0 h-screen w-2/3 p-4">
-      <div className="fixed right-4 mt-4 flex items-center gap-4">
+    <>
+      <div className="fixed right-4 top-16 z-40 mt-4 flex h-20 w-full items-center justify-end gap-4 bg-background">
         <Button
           className="flex items-center gap-3"
           variant="outline"
@@ -34,10 +34,8 @@ export default function Canvas({ canvasItems, onRemove }: TCanvasProps) {
           <IconFileCheck />
         </Button>
       </div>
-
-      <div className="h-32" />
-
-      <div className="flex w-5/6 items-center justify-center">
+      <div className="h-28" />
+      <div className="flex items-center justify-center">
         <Container className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1">
           <ul>
             {canvasItems.map((item) => (
@@ -46,10 +44,10 @@ export default function Canvas({ canvasItems, onRemove }: TCanvasProps) {
               </EditableSection>
             ))}
           </ul>
-
           <DropArea />
+          <div className="h-8" />
         </Container>
       </div>
-    </div>
+    </>
   );
 }

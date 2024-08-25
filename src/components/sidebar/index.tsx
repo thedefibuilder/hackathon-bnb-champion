@@ -85,7 +85,7 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
     },
   ];
   return (
-    <aside className="top-18 fixed left-0 z-20 h-screen transition-all duration-500 ease-in-out lg:mt-4 md:h-[calc(100vh-70px)]">
+    <div className="top-18 fixed left-0 z-20 h-screen transition-all duration-500 ease-in-out lg:mt-4 md:h-[calc(100vh-70px)]">
       <div className="relative flex h-full flex-col items-center shadow-md dark:shadow-zinc-800 lg:px-5 md:px-5">
         <Tabs defaultValue="customize" className="w-full">
           <TabsList className="w-full justify-between gap-4 bg-transparent">
@@ -112,6 +112,6 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
           ))}
         </Tabs>
       </div>
-    </aside>
+    </div>
   );
 }

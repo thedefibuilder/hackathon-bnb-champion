@@ -82,7 +82,7 @@ export default function GridSettingsDialog({ id }: TGridSettingsDialogProps) {
               />
             </div>
           </div>
-
+          {/* 
           <div>
             <h4 className="text-left">Gap</h4>
             <div className="h-4" />
@@ -114,9 +114,7 @@ export default function GridSettingsDialog({ id }: TGridSettingsDialogProps) {
               </div>
             </div>
           </div>
-
           <div className="border-b py-2" />
-
           <div>
             <div className="h-2" />
             <div className="flex items-center justify-between gap-4">
@@ -136,7 +134,7 @@ export default function GridSettingsDialog({ id }: TGridSettingsDialogProps) {
                 <IconAlignRight />
               </div>
             </div>
-          </div>
+          </div> */}
         </DialogHeader>
       </DialogContent>
     </Dialog>

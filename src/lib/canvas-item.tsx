@@ -5,6 +5,9 @@ import HeadingItem from "@/components/canvas/items/heading";
 import ImageItem from "@/components/canvas/items/image";
 import TextEditorItem from "@/components/canvas/items/text-editor";
 import { EItemName } from "./items";
+import GridSettingsDialog from "@/components/canvas/items/dialog/grid-settings-dialog";
+import ImageSettingsDialog from "@/components/canvas/items/dialog/image-settings-dialog";
+import ButtonSettingsDialog from "@/components/canvas/items/dialog/button-settings-dialog";
 
 export type TCanvasItem =
   | {
@@ -12,14 +15,23 @@ export type TCanvasItem =
       component: (id: string) => JSX.Element;
       itemName: EItemName.textEditor | EItemName.dropArea;
       settings: any;
+      modal?: (id: string) => JSX.Element;
     }
   | {
       id: string;
       component: (id: string) => JSX.Element;
       itemName: EItemName.heading;
       settings: {
-        level: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+        level:
+          | "header-one"
+          | "header-two"
+          | "header-three"
+          | "header-four"
+          | "header-five"
+          | "header-six";
+        text: string;
       };
+      modal?: (id: string) => JSX.Element;
     }
   | {
       id: string;
@@ -31,6 +43,7 @@ export type TCanvasItem =
         gapColumns: number;
         gapRows: number;
       };
+      modal?: (id: string) => JSX.Element;
     }
   | {
       id: string;
@@ -40,7 +53,11 @@ export type TCanvasItem =
         source: string;
         width: number;
         height: number;
+        name: string;
+        accept?: string;
+        maxSize?: number;
       };
+      modal?: (id: string) => JSX.Element;
     }
   | {
       id: string;
@@ -50,9 +67,10 @@ export type TCanvasItem =
         text: string;
         link?: string;
       };
+      modal?: (id: string) => JSX.Element;
     };
 
-export const dropArea: TCanvasItem = {
+const dropArea: TCanvasItem = {
   id: "drop-area",
   component: (id: string) => <DropArea />,
   itemName: EItemName.dropArea,
@@ -61,10 +79,11 @@ export const dropArea: TCanvasItem = {
 
 const heading: TCanvasItem = {
   id: "heading",
-  component: (id: string) => <HeadingItem />,
+  component: (id: string) => <HeadingItem id={id} />,
   itemName: EItemName.heading,
   settings: {
-    level: "h1",
+    level: "header-one",
+    text: "Add text",
   },
 };
 
@@ -78,33 +97,41 @@ const grid: TCanvasItem = {
     gapColumns: 0,
     gapRows: 0,
   },
+  modal: (id: string) => <GridSettingsDialog id={id} />,
 };
 
 const textEditor: TCanvasItem = {
   id: "textEditor",
-  component: (id: string) => <TextEditorItem />,
+  component: (id: string) => <TextEditorItem id={id} />,
   itemName: EItemName.textEditor,
   settings: {},
 };
 
 const image: TCanvasItem = {
   id: "image",
-  component: (id: string) => <ImageItem />,
+  component: (id: string) => (
+    <ImageItem accept="image/*" maxSize={5000000} id={id} />
+  ),
   itemName: EItemName.image,
   settings: {
-    source: "image.png",
+    source: "",
     width: 100,
     height: 100,
+    name: "uploadeImage",
+    accept: "image/*",
+    maxSize: 5000000, // 5 MB
   },
+  modal: (id: string) => <ImageSettingsDialog id={id} />,
 };
 
 const button: TCanvasItem = {
   id: "button",
-  component: (id: string) => <ButtonItem />,
+  component: (id: string) => <ButtonItem id={id} />,
   itemName: EItemName.button,
   settings: {
     text: "Click Me!",
   },
+  modal: (id: string) => <ButtonSettingsDialog id={id} />,
 };
 
 const canvasItemsMap: Record<EItemName, TCanvasItem> = {
