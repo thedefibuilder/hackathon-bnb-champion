@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, HTMLMotionProps, motion } from "framer-motion";
 
-import { cn } from "@/lib/utils";
+import { cn } from "src/lib/utils";
 
 interface WordRotateProps {
   words: string[];
@@ -35,7 +35,7 @@ export default function WordRotate({
   }, [words, duration]);
 
   return (
-    <div className="overflow-hidden py-2">
+    <div className="overflow-hidden py-14">
       <AnimatePresence mode="wait">
         <motion.h1
           key={words[index]}

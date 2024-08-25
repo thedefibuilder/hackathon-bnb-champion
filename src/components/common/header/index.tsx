@@ -3,7 +3,7 @@
 import React from "react";
 
 import { LogoWithTitle } from "./logo";
-import DappWalletButton from "@/app/_components/dapp/dapp-wallet-button";
+import DappWalletButton from "src/components/dapp-wallet-button";
 
 export default function Header() {
   return (
