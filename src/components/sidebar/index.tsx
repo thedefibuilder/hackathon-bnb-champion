@@ -40,37 +40,93 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
         <>
           <div className="h-3" />
           <Row>
-            <Col>
+            <Col
+              lg={undefined}
+              md={undefined}
+              sm={undefined}
+              lgOffset={undefined}
+              mdOffset={undefined}
+              smOffset={undefined}
+            >
               <h2 className="text-s">Layout Elements</h2>
             </Col>
           </Row>
           <Row className="mb-4 mt-6">
-            <Col lg={6}>
+            <Col
+              lg={6}
+              md={undefined}
+              sm={undefined}
+              lgOffset={undefined}
+              mdOffset={undefined}
+              smOffset={undefined}
+            >
               <SidebarItem item={sidebarContainer} />
             </Col>
-            <Col lg={6}>
+            <Col
+              lg={6}
+              md={undefined}
+              sm={undefined}
+              lgOffset={undefined}
+              mdOffset={undefined}
+              smOffset={undefined}
+            >
               <SidebarItem item={sidebarGrid} />
             </Col>
           </Row>
           <div className="h-3" />
           <Row>
-            <Col>
+            <Col
+              lg={undefined}
+              md={undefined}
+              sm={undefined}
+              lgOffset={undefined}
+              mdOffset={undefined}
+              smOffset={undefined}
+            >
               <h2>Customize Elements</h2>
             </Col>
           </Row>
           <Row className="mb-4 mt-6">
-            <Col lg={6}>
+            <Col
+              lg={6}
+              md={undefined}
+              sm={undefined}
+              lgOffset={undefined}
+              mdOffset={undefined}
+              smOffset={undefined}
+            >
               <SidebarItem item={sidebarHeading} />
             </Col>
-            <Col lg={6}>
+            <Col
+              lg={6}
+              md={undefined}
+              sm={undefined}
+              lgOffset={undefined}
+              mdOffset={undefined}
+              smOffset={undefined}
+            >
               <SidebarItem item={sidebarImage} />
             </Col>
           </Row>
           <Row>
-            <Col lg={6}>
+            <Col
+              lg={6}
+              md={undefined}
+              sm={undefined}
+              lgOffset={undefined}
+              mdOffset={undefined}
+              smOffset={undefined}
+            >
               <SidebarItem item={sidebarTextEditor} />
             </Col>
-            <Col lg={6}>
+            <Col
+              lg={6}
+              md={undefined}
+              sm={undefined}
+              lgOffset={undefined}
+              mdOffset={undefined}
+              smOffset={undefined}
+            >
               <SidebarItem item={sidebarButton} />
             </Col>
           </Row>
@@ -84,8 +140,9 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
       content: <SidebarSettings fonts={fonts} />,
     },
   ];
+
   return (
-    <aside className="top-18 fixed left-0 z-20 h-screen transition-all duration-500 ease-in-out lg:mt-4 md:h-[calc(100vh-70px)]">
+    <div className="top-18 fixed left-0 z-20 h-screen transition-all duration-500 ease-in-out lg:mt-4 md:h-[calc(100vh-70px)]">
       <div className="relative flex h-full flex-col items-center shadow-md dark:shadow-zinc-800 lg:px-5 md:px-5">
         <Tabs defaultValue="customize" className="w-full">
           <TabsList className="w-full justify-between gap-4 bg-transparent">
@@ -112,6 +169,6 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
           ))}
         </Tabs>
       </div>
-    </aside>
+    </div>
   );
 }
