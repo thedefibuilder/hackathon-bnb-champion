@@ -105,6 +105,7 @@ export default function DaoToken() {
                   >
                     Explore Tokens
                   </Link>
+                  <div className="h-2" />
                   <Link
                     href="#"
                     className="inline-flex h-10 items-center justify-center rounded-md border border-input px-8 text-sm font-medium shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"

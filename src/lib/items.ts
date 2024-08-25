@@ -8,9 +8,23 @@ export enum EItemName {
   dropArea = "dropArea",
 }
 
-export const itemNames = Object.values(EItemName) as [
+export enum TemplatesName {
+  nftA = "nft-a",
+  nftB = "nft-b",
+  nftC = "nft-c",
+  tokenA = "token-a",
+  tokenB = "token-b",
+  tokenC = "token-c",
+  daoToken = "dao-token",
+}
+
+export const itemBlockNames = Object.values(EItemName) as [
   EItemName,
   ...EItemName[],
+];
+export const itemTemplateNames = Object.values(TemplatesName) as [
+  TemplatesName,
+  ...TemplatesName[],
 ];
 
 export function generateRandomId(length = 10) {

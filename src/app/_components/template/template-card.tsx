@@ -1,146 +1,62 @@
 import React from "react";
-
-import { HandMetal, WandSparkles } from "lucide-react";
 import Image from "next/image";
-
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import { SignIn } from '@/components/user/dialog/sign-in';
-import { type TTemplate } from "@/lib/templates";
-import { cn } from "@/lib/utils";
+import { IconEye, IconStar } from "@tabler/icons-react";
+import Link from "next/link";
 
 type TTemplateCardProps = {
-  title: string;
-  description: string;
-  image: string;
-  template: TTemplate;
-  isPro: boolean;
-  onClick: () => void;
+  item: {
+    id: string;
+    name: string;
+    author: string;
+    image: string;
+    livePreview: string;
+    rating: number;
+    price: number;
+    category: string;
+  };
 };
 
-export default function TemplateCard({
-  title,
-  image,
-  description,
-  template,
-  isPro,
-  onClick,
-}: TTemplateCardProps) {
-  const modules =
-    template.contracts.map((contract) => ({
-      moduleName: contract.moduleName,
-      features: contract.featureNames,
-    })) ?? [];
+export default function TemplateCard({ item }: TTemplateCardProps) {
+  const { name, author, image, livePreview, rating, price } = item;
 
   return (
-    <div
-      className={cn(
-        "group relative w-full rounded-3xl border-2 p-3 lg:px-6 lg:hover:border-primary-light",
-        modules.length > 0
-          ? "min-h-[620px] lg:min-h-[521px] md:min-h-[600px]"
-          : "",
-        isPro
-          ? "border-secondary-dark lg:hover:border-secondary lg:hover:bg-template-card-orange-gradient"
-          : "lg:hover:bg-template-card-gradient",
-      )}
-    >
-      <div className="relative z-10">
-        {isPro ? (
-          <div className="flex items-center gap-3 lg:group-hover:opacity-0">
-            <HandMetal className="text-secondary" />
-            <h4 className="text-secondary">Pro Template</h4>
-          </div>
-        ) : (
-          <h4 className="lg:group-hover:opacity-0">Template</h4>
-        )}
-
-        <div className="h-4" />
-        <h2 className="text-xl font-bold lg:min-h-[50px] lg:group-hover:opacity-0">
-          {title}
-        </h2>
-        <div className="h-4 lg:hidden" />
-        <Image
-          src={image}
-          alt={title}
-          width={318}
-          height={220}
-          className="h-auto w-full rounded transition-opacity duration-300 ease-in-out lg:group-hover:opacity-0"
-        />
-        <div className="group relative">
-          <div
-            className={cn(
-              "z-40 transform transition-opacity transition-transform duration-300 ease-in-out lg:absolute lg:-top-[12rem] lg:left-0 lg:right-0 lg:min-h-[220px] lg:translate-y-6 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100",
-              isPro
-                ? "bg-template-card-orange-gradient-test lg:opacity-0"
-                : "lg:bg-template-card-gradient",
-            )}
-          >
-            <div className="h-4 lg:h-8" />
-            <p className="text-s sm:min-h-auto lg:min-h-[85px] md:min-h-[90px]">
-              {description}
-            </p>
-            <div className="h-4" />
-
-            <Button
-              className={cn(
-                "flex w-full items-center gap-2 rounded",
-                isPro
-                  ? "bg-secondary-dark text-secondary hover:bg-secondary hover:text-secondary-dark"
-                  : "bg-primary hover:bg-primary-light",
-              )}
-              type="button"
-              onClick={onClick}
-            >
-              <WandSparkles /> Create with template
-            </Button>
-          </div>
+    <div className="relative mb-10 rounded-[16px] border border-primary">
+      <div className="absolute left-4 top-6 flex w-full items-center gap-4">
+        <div className="flex items-center gap-2 rounded-full bg-[#FAFAFA] px-4 py-2 text-xl">
+          <IconStar
+            stroke={2}
+            className="h-6 w-6 fill-current text-secondary"
+          />
+          <p className="font-bold text-primary">{rating}</p>
         </div>
-
-        <div className="h-6" />
-        <h3 className="text-accent-medium">
-          {modules.length > 0
-            ? "Template Modules"
-            : "Choose any modules you want"}
-        </h3>
-        <div className="h-2" />
-        {modules.length > 0 ? (
-          <Tabs defaultValue={modules[0]?.moduleName ?? ""}>
-            <TabsList className="gap-3 bg-transparent px-0 py-1">
-              {modules.map((module, index) => (
-                <TabsTrigger
-                  key={`${module.moduleName}-${index}`}
-                  className="text-l !bg-secondary-medium rounded"
-                  value={module.moduleName}
-                >
-                  {module.moduleName}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            {modules.map((module, index) => (
-              <TabsContent
-                key={`${module.moduleName}-content-${index}`}
-                value={module.moduleName}
-                className="min-h-[122px] w-full"
-              >
-                <div className="flex w-full flex-wrap gap-2 overflow-auto">
-                  {module.features.map((feature, fIndex) => (
-                    <span
-                      key={`${feature}-${fIndex}`}
-                      className={cn([
-                        "text-l rounded px-2 py-1",
-                        isPro
-                          ? "!bg-secondary-dark !text-secondary"
-                          : "!bg-primary-foreground !text-primary",
-                      ])}
-                    >
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
-        ) : null}
+        <div className="flex items-center gap-2 rounded-full bg-[#FAFAFA] px-4 py-2 text-xl">
+          <IconEye stroke={2} className="h-6 w-6 text-primary" />
+          <Link
+            target="_blank"
+            className="font-bold text-primary"
+            href={livePreview}
+          >
+            Live preview
+          </Link>
+        </div>
+      </div>
+      <Image
+        src={image}
+        alt={name}
+        width={460}
+        height={466}
+        className="h-[340px] w-full rounded-t-[16px]"
+      />
+      <div className="relative rounded-b-[16px] bg-[#1d0f28] p-4">
+        <div className="absolute bottom-10 right-8 flex h-24 w-24 flex-col items-center justify-center rounded-[8px] bg-[#9546b2]">
+          <p className="text-4xl">
+            <span>$</span>
+            {price}
+          </p>
+          <p className="text-lg uppercase">buy</p>
+        </div>
+        <h2 className="text-3xl font-bold">{name}</h2>
+        <p className="text-lg">{author}</p>
       </div>
     </div>
   );

@@ -1,17 +1,12 @@
+"use client";
 import React from "react";
-
-import type { ETemplateName } from "@/lib/templates";
 
 import dynamic from "next/dynamic";
 
-import { templates } from "@/lib/templates";
-import { useStepper } from "./stepper";
+import { templates } from "src/lib/templates";
 import { Col, Row } from "../../components/common/grid";
-import { Skeleton } from "@/components/ui/skeleton";
-
-type TChooseTemplateProps = {
-  onTemplateClick: (template: ETemplateName) => void;
-};
+import { Skeleton } from "src/components/ui/skeleton";
+import Templates from "./template/templates";
 
 const TemplateHero = dynamic(() => import("./template/template-hero"), {
   loading: () => (
@@ -27,38 +22,13 @@ const TemplateCard = dynamic(() => import("./template/template-card"), {
   ssr: false,
 });
 
-export default function ChooseTemplate({
-  onTemplateClick,
-}: TChooseTemplateProps) {
-  const { nextStep } = useStepper();
-  const handleTemplateClick = (template: ETemplateName) => {
-    onTemplateClick(template);
-    nextStep();
-  };
-
+export default function ChooseTemplate() {
   return (
     <>
+      <div className="h-12" />
       <TemplateHero />
       <div className="h-12" />
-      <Row>
-        {templates.map((template, index) => (
-          <Col
-            lg={3}
-            md={3}
-            key={`${template.name}-${index}`}
-            className="mb-10 sm:mb-6"
-          >
-            <TemplateCard
-              image={template.image}
-              title={template.name}
-              description={template.description}
-              template={template}
-              isPro={template.isPro ?? false}
-              onClick={() => handleTemplateClick(template.name)}
-            />
-          </Col>
-        ))}
-      </Row>
+      <Templates />
       <div className="h-20" />
     </>
   );
