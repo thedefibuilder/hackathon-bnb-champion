@@ -101,6 +101,18 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        "shine-pulse": {
+          "0%": {
+            "background-position": "0% 0%",
+          },
+          "50%": {
+            "background-position": "100% 100%",
+          },
+          to: {
+            "background-position": "0% 0%",
+          },
+        },
+
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -139,12 +151,8 @@ const config = {
         "main-gradient": "linear-gradient(to right, #0d0d0d, #190520)",
         "template-card-gradient":
           "linear-gradient(to bottom, #1a0423, #0d0d0d)",
-        "template-card-orange-gradient":
-          "linear-gradient(to bottom, #431e07, #0d0d0d)",
-        "secondary-gradient": "linear-gradient(to bottom, #0d0d0d, #190520)",
-        "contact-banner-gradient":
-          "linear-gradient(to right, #1a0423, #420b25)",
-        "contact-banner": "url('/bg-gradient.png')",
+        "user-template-header-section":
+          "linear-gradient(to bottom, #111919, #273636)",
       },
     },
   },

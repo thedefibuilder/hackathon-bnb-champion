@@ -18,13 +18,28 @@ export enum TemplatesName {
   daoToken = "dao-token",
 }
 
+export enum UserTemplatesName {
+  BlogA = "BlogA",
+  NftA = "NftA",
+  TokenA = "TokenA",
+  BlogB = "BlogB",
+  NftB = "NftB",
+  TokenB = "TokenB",
+}
+
 export const itemBlockNames = Object.values(EItemName) as [
   EItemName,
   ...EItemName[],
 ];
+
 export const itemTemplateNames = Object.values(TemplatesName) as [
   TemplatesName,
   ...TemplatesName[],
+];
+
+export const itemTUserTemplateNames = Object.values(UserTemplatesName) as [
+  UserTemplatesName,
+  ...UserTemplatesName[],
 ];
 
 export function generateRandomId(length = 10) {

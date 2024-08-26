@@ -20,36 +20,42 @@ export default function TemplateCard({ item }: TTemplateCardProps) {
   const { name, author, image, livePreview, rating, price } = item;
 
   return (
-    <div className="relative mb-10 rounded-[16px] border border-primary">
-      <div className="absolute left-4 top-6 flex w-full items-center gap-4">
-        <div className="flex items-center gap-2 rounded-full bg-[#FAFAFA] px-4 py-2 text-xl">
-          <IconStar
-            stroke={2}
-            className="h-6 w-6 fill-current text-secondary"
-          />
-          <p className="font-bold text-primary">{rating}</p>
+    <div className="relative mb-10 rounded-[16px] border">
+      <div className="relative">
+        <div className="absolute left-4 top-6 z-10 flex w-full items-center gap-4">
+          <div className="flex items-center gap-2 rounded-full border border-primary bg-[#FAFAFA] px-3 py-1 text-xl">
+            <IconStar
+              stroke={2}
+              className="h-4 w-4 fill-current text-secondary"
+            />
+            <p className="text-[14px] font-bold text-primary">{rating}</p>
+          </div>
+          <div className="flex items-center gap-2 rounded-full border border-primary bg-[#FAFAFA] px-3 py-1 text-xl">
+            <IconEye stroke={2} className="h-4 w-4 text-primary" />
+            <Link
+              target="_blank"
+              className="text-[14px] font-bold text-primary"
+              href={livePreview}
+            >
+              Live preview
+            </Link>
+          </div>
         </div>
-        <div className="flex items-center gap-2 rounded-full bg-[#FAFAFA] px-4 py-2 text-xl">
-          <IconEye stroke={2} className="h-6 w-6 text-primary" />
-          <Link
-            target="_blank"
-            className="font-bold text-primary"
-            href={livePreview}
-          >
-            Live preview
-          </Link>
+
+        <div className="relative w-full">
+          <Image
+            src={image}
+            alt={name}
+            width={400}
+            height={400}
+            className="rounded-t-[16px]"
+          />
         </div>
       </div>
-      <Image
-        src={image}
-        alt={name}
-        width={460}
-        height={466}
-        className="h-[340px] w-full rounded-t-[16px]"
-      />
-      <div className="relative rounded-b-[16px] bg-[#1d0f28] p-4">
-        <div className="absolute bottom-10 right-8 flex h-24 w-24 flex-col items-center justify-center rounded-[8px] bg-[#9546b2]">
-          <p className="text-4xl">
+
+      <div className="relative rounded-b-[16px] bg-background p-4">
+        <div className="absolute bottom-14 right-6 flex h-20 w-20 flex-col items-center justify-center rounded-[8px] bg-primary p-2">
+          <p className="text-2xl">
             <span>$</span>
             {price}
           </p>

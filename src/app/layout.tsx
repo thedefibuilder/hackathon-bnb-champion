@@ -31,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-main-gradient">
+      <body className="bg-[#000C03]">
         <RootProvider>
           <Header />
 
