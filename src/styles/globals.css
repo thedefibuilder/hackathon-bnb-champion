@@ -30,15 +30,19 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 135, 20%, 8%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 284, 72%, 36%;
-    --primary-light: 284, 70%, 62%;
+    /* --primary: 284, 72%, 36%; */
+    /* --primary-light: 284, 70%, 62%; */
+
+    --primary: 119, 58%, 55%;
+    --primary-light: 117, 79%, 76%;
+
     --primary-foreground: 284, 79%, 7%;
 
     --secondary: 24, 97%, 65%;
@@ -106,9 +110,6 @@
   background: #555;
 }
 
-/* * {
-  border: 1px solid red;
-} */
 .rdw-dropdownoption-default {
   color: black;
 }
@@ -122,3 +123,7 @@
   color: black;
   padding: 10px;
 }
+
+/* * {
+  border: 1px solid red;
+} */

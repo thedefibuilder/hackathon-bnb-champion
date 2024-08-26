@@ -31,7 +31,7 @@ export default function Templates() {
       <div className="h-12" />
       <Row>
         {Object.values(templateItemsMap).map((item) => (
-          <Col lg={4}>
+          <Col lg={3}>
             <TemplateCard key={item.id} item={item} />
           </Col>
         ))}
@@ -48,7 +48,7 @@ export default function Templates() {
       <div className="h-12" />
       <Row>
         {Object.values(tokenItems).map((item) => (
-          <Col lg={4}>
+          <Col lg={3}>
             <TemplateCard key={item.id} item={item} />
           </Col>
         ))}
@@ -65,7 +65,7 @@ export default function Templates() {
       <div className="h-12" />
       <Row>
         {Object.values(enftItems).map((item) => (
-          <Col lg={4}>
+          <Col lg={3}>
             <TemplateCard key={item.id} item={item} />
           </Col>
         ))}
@@ -82,7 +82,7 @@ export default function Templates() {
       <div className="h-12" />
       <Row>
         {Object.values(daoItem).map((item) => (
-          <Col lg={4}>
+          <Col lg={3}>
             <TemplateCard key={item.id} item={item} />
           </Col>
         ))}

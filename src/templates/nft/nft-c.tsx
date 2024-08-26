@@ -99,6 +99,7 @@ export default function NftC() {
                 >
                   View NFTs
                 </Link>
+                <div className="h-1" />
                 <Link
                   href="#"
                   className="inline-flex h-10 items-center justify-center rounded-md border border-input px-8 text-sm font-medium shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
@@ -110,7 +111,7 @@ export default function NftC() {
               </div>
             </div>
             <img
-              src="/nft.png"
+              src="/nft5.png"
               width="550"
               height="550"
               alt="Hero NFT"
@@ -147,7 +148,7 @@ export default function NftC() {
                 style={{ fontFamily: fonts, borderColor: colors.background }}
               >
                 <img
-                  src="/nft.png"
+                  src="/nft5.png"
                   width="350"
                   height="350"
                   alt="NFT 1"

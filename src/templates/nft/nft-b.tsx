@@ -58,7 +58,7 @@ export default function NftB() {
                 style={{ borderColor: colors.primary }}
               >
                 <img
-                  src="/nft.png"
+                  src="/nft4.png"
                   width={600}
                   height={400}
                   alt="Featured NFT"
@@ -127,7 +127,7 @@ export default function NftB() {
               >
                 <div className="relative">
                   <img
-                    src="/nft.png"
+                    src="/nft5.png"
                     width={400}
                     height={300}
                     alt="NFT"
