@@ -1,14 +1,19 @@
 import React from "react";
 
-import { fetchGoogleFonts } from "@/lib/server-actions";
-import dynamic from "next/dynamic";
+import UserTemplateHero from "@/app/_components/user-template/user-template-hero";
+import UserTemplates from "@/app/_components/user-template/user-templates";
+import { Container } from "@/components/common/grid";
 
-const ManageClient = dynamic(() => import("@/components/manage/client"), {
-  ssr: false,
-});
+export default function UserTemplatePage() {
+  return (
+    <>
+      <div className="h-12" />
+      <UserTemplateHero />
+      <div className="h-12" />
 
-export default async function ManagePage() {
-  const fonts = await fetchGoogleFonts();
-
-  return <ManageClient fonts={fonts} />;
+      <Container>
+        <UserTemplates />
+      </Container>
+    </>
+  );
 }

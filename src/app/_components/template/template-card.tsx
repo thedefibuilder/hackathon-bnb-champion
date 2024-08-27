@@ -1,7 +1,14 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { IconEye, IconStar } from "@tabler/icons-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import useBuyTemplate from "@/lib/hooks/use-buy-template";
+import { bscTestnet } from "viem/chains";
+import { bnbChainTestnet } from "@/lib/types/chain";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@radix-ui/react-toast";
 
 type TTemplateCardProps = {
   item: {
@@ -17,7 +24,29 @@ type TTemplateCardProps = {
 };
 
 export default function TemplateCard({ item }: TTemplateCardProps) {
+  const { toast } = useToast();
+  const { buyTemplate, txHash } = useBuyTemplate(
+    bnbChainTestnet,
+    `gpress-${item.id}`,
+  );
   const { name, author, image, livePreview, rating, price } = item;
+
+  useEffect(() => {
+    if (txHash) {
+      toast({
+        title: "Transaction sent",
+        description: "The transaction to buy the template was sent",
+        action: (
+          <ToastAction altText={"View on Explorer"}>
+            <Link
+              href={`https://testnet.bscscan.com/tx/${txHash}`}
+              target="_blank"
+            />
+          </ToastAction>
+        ),
+      });
+    }
+  }, [txHash]);
 
   return (
     <div className="relative mb-10 rounded-[16px] border">
@@ -54,13 +83,16 @@ export default function TemplateCard({ item }: TTemplateCardProps) {
       </div>
 
       <div className="relative rounded-b-[16px] bg-background p-4">
-        <div className="absolute bottom-14 right-6 flex h-20 w-20 flex-col items-center justify-center rounded-[8px] bg-primary p-2">
+        <Button
+          onClick={buyTemplate}
+          className="absolute bottom-14 right-6 flex h-20 w-20 flex-col items-center justify-center rounded-[8px] bg-primary p-2"
+        >
           <p className="text-2xl">
             <span>$</span>
             {price}
           </p>
           <p className="text-lg uppercase">buy</p>
-        </div>
+        </Button>
         <h2 className="text-3xl font-bold">{name}</h2>
         <p className="text-lg">{author}</p>
       </div>
