@@ -1,7 +1,10 @@
+'use client'
 import React from "react";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
-import Templates from "./_components/template/templates";
+import { Form } from "@/components/ui/form";
+import { useForm } from "react-hook-form";
+import { TCategoryFilter } from "@/lib/schemas/category-filter";
 
 const TemplateHero = dynamic(
   () => import("./_components/template/template-hero"),
@@ -9,18 +12,30 @@ const TemplateHero = dynamic(
     loading: () => (
       <Skeleton className="h-[128px] w-full rounded-3xl lg:h-[136px] md:h-[232px]" />
     ),
-    ssr: true,
+    ssr: false,
   },
 );
 
-export default function CreateProjectPage() {
+const Templates = dynamic(() => import("./_components/template/templates"), {
+  loading: () => (
+    <Skeleton className="h-96 w-full rounded-3xl lg:h-[136px] md:h-[232px]" />
+  ),
+  ssr: false,
+});
+
+
+export default function HomePage() {
+  const form = useForm<TCategoryFilter>();
+
   return (
-    <>
+    <Form {...form}>
+      <form>
       <div className="h-12" />
       <TemplateHero />
       <div className="h-12" />
       <Templates />
       <div className="h-20" />
-    </>
+      </form>
+    </Form>
   );
 }

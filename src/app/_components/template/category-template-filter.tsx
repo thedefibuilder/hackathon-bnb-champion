@@ -10,6 +10,7 @@ import {
   TablerIcon,
 } from "@tabler/icons-react";
 import React from "react";
+import {TCategoryFilter} from "@/lib/schemas/category-filter";
 import { useFormContext } from "react-hook-form";
 
 export type TTemplateFilter = {
@@ -42,12 +43,12 @@ const filterOptions: TTemplateFilter[] = [
 
 export default function CategoryTemplateFilter() {
   const pathname = usePathname();
-  const { setValue, watch } = useFormContext();
+  const { setValue, watch } = useFormContext<TCategoryFilter>();
 
   const selectedCategory = watch("category");
 
   const filteredOptions =
-    pathname === "/user/uploade-template"
+    pathname === "/manage/upload"
       ? filterOptions.filter((option) => option.text !== "Show All")
       : filterOptions;
 
@@ -56,7 +57,7 @@ export default function CategoryTemplateFilter() {
       type="single"
       className="flex items-center justify-between"
       value={selectedCategory}
-      onValueChange={(value) => {
+      onValueChange={(value: string) => {
         if (value) {
           setValue("category", value);
         }

@@ -5,13 +5,10 @@ import { z } from "zod";
 import {
   colorNames,
   EColorNames,
-  EFontNames,
   ESocialNames,
-  fontNames,
 } from "@/lib/customize-options";
 import { featureNames, moduleFeatures } from "@/lib/features";
 import { moduleNames } from "@/lib/modules";
-import { describe } from "node:test";
 
 export const createProjectSchema = z.object({
   name: z

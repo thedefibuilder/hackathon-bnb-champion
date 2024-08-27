@@ -1,7 +1,6 @@
 import { Col, Row } from "src/components/common/grid";
 import UserTemplateCard from "./user-template-card";
 import { userTemplateItemsMap } from "@/lib/user-templates-items";
-import Link from "next/link";
 
 export default function UserTemplates() {
   const items = Object.values(userTemplateItemsMap);
