@@ -30,7 +30,7 @@ export default function UserTemplateHero() {
           <div className="h-2" />
           <Link
             className="text-[40px] font-bold text-primary hover:no-underline"
-            href=""
+            href="/manage/upload"
           >
             Sell your own template
           </Link>

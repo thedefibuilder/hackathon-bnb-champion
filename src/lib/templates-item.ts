@@ -17,7 +17,7 @@ const nftA: TTemplateItem = {
   author: "by Myspace Tom ",
   image: "/nft1.png",
   livePreview: "/preview/nft-a",
-  rating: 3.5,
+  rating: 4.5,
   price: 60,
   category: "nft",
 };
@@ -72,7 +72,7 @@ const tokenC: TTemplateItem = {
   author: "by Alex",
   image: "/token-c.png",
   livePreview: "/preview/token-c",
-  rating: 3.5,
+  rating: 4.2,
   price: 60,
   category: "token",
 };
@@ -83,7 +83,7 @@ const daoToken: TTemplateItem = {
   author: "by Roland",
   image: "/dao-token.png",
   livePreview: "/preview/token-c",
-  rating: 3.5,
+  rating: 4.3,
   price: 60,
   category: "dao",
 };

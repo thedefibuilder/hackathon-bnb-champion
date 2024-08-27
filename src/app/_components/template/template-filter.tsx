@@ -1,3 +1,4 @@
+"use client";
 import { Col, Row } from "src/components/common/grid";
 import { Button } from "src/components/ui/button";
 import { Input } from "src/components/ui/input";

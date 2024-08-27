@@ -18,6 +18,7 @@ export default function Templates() {
   const daoItem = Object.values(templateItemsMap).filter(
     (item) => item.category === "dao",
   );
+
   return (
     <>
       <Row>

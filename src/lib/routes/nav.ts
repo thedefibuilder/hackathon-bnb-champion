@@ -1,25 +1,30 @@
-import { type ForwardRefExoticComponent, type RefAttributes, type SVGProps } from 'react';
+import {
+  type ForwardRefExoticComponent,
+  type RefAttributes,
+  type SVGProps,
+} from "react";
 
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from "lucide-react";
 
-import { IconBrandProducthunt } from '@tabler/icons-react';
-import { Globe, LayoutGrid, SquarePlus } from 'lucide-react';
+import { Globe, LayoutGrid, SquarePlus } from "lucide-react";
+import DorahacksLogo from "@/assets/images/DoraHacks-logo.png";
 
 export enum ENavRoutesName {
-  create = 'Create',
-  dashboard = 'Manage',
-  explore = 'Explore',
-  productHunt = 'Find out more on ProductHunt'
+  home = "Home",
+  manage = "Manage",
+  leaderboard = "Leaderboard",
+  dorahacks = "Find out more on DoraHacks",
 }
 
 export enum ENavRoutesPath {
-  home = '/',
-  create = '/create',
-  dashboard = '/manage',
-  explore = '/explore',
-  productHunt = 'https://www.producthunt.com/posts/defi-builder'
+  home = "/",
+  manage = "/manage",
+  leaderboard = "/leaderboard",
+  dorahacks = "https://dorahacks.io/buidl/15114",
 }
-type TablerIcon = ForwardRefExoticComponent<SVGProps<SVGSVGElement> & RefAttributes<SVGSVGElement>>;
+type TablerIcon = ForwardRefExoticComponent<
+  SVGProps<SVGSVGElement> & RefAttributes<SVGSVGElement>
+>;
 type CombinedIcon = LucideIcon | TablerIcon;
 
 interface DashboardRoute {
@@ -30,23 +35,23 @@ interface DashboardRoute {
 
 export const navRoutes: DashboardRoute[] = [
   {
-    name: ENavRoutesName.create,
-    path: ENavRoutesPath.create,
-    icon: SquarePlus
+    name: ENavRoutesName.home,
+    path: ENavRoutesPath.home,
+    icon: SquarePlus,
   },
   {
-    name: ENavRoutesName.dashboard,
-    path: ENavRoutesPath.dashboard,
-    icon: LayoutGrid
+    name: ENavRoutesName.manage,
+    path: ENavRoutesPath.manage,
+    icon: LayoutGrid,
   },
   {
-    name: ENavRoutesName.explore,
-    path: ENavRoutesPath.explore,
-    icon: Globe
+    name: ENavRoutesName.leaderboard,
+    path: ENavRoutesPath.leaderboard,
+    icon: Globe,
   },
   {
-    name: ENavRoutesName.productHunt,
-    path: ENavRoutesPath.productHunt,
-    icon: IconBrandProducthunt as TablerIcon
-  }
+    name: ENavRoutesName.dorahacks,
+    path: ENavRoutesPath.dorahacks,
+    icon: DorahacksLogo as unknown as CombinedIcon, // fix this
+  },
 ];
