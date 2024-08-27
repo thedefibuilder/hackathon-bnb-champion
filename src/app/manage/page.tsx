@@ -19,7 +19,6 @@ const UserTemplates = dynamic(
   },
 );
 
-
 export default function UserTemplatePage() {
   return (
     <>
@@ -27,7 +26,7 @@ export default function UserTemplatePage() {
       <UserTemplateHero />
       <div className="h-12" />
 
-      <Container>
+      <Container variant="fluid">
         <UserTemplates />
       </Container>
     </>

@@ -153,8 +153,9 @@ const config = {
         "main-gradient": "linear-gradient(to right, #0d0d0d, #190520)",
         "template-card-gradient":
           "linear-gradient(to bottom, #1a0423, #0d0d0d)",
-        "user-template-header-section":
-          "linear-gradient(to bottom, #111919, #273636)",
+        "first-place": "linear-gradient(to bottom, #1B1402, #59430B)",
+        "second-place": "linear-gradient(to bottom, #111919, #273636)",
+        "third-place": "linear-gradient(to bottom, #170C09, #361F18)",
       },
     },
   },

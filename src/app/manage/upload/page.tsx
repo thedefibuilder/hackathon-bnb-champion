@@ -13,7 +13,7 @@ export default async function UploadeTemplate() {
   const bnbRate = await fetchBnbRate();
 
   return (
-    <Container>
+    <Container variant="fluid">
       <div className="h-12" />
       <UploadeTemplateForm bnbRate={bnbRate} />
     </Container>
