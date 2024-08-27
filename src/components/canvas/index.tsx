@@ -36,7 +36,10 @@ export default function Canvas({ canvasItems, onRemove }: TCanvasProps) {
       </div>
       <div className="h-28" />
       <div className="flex items-center justify-center">
-        <Container className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1">
+        <Container
+          className="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1"
+          variant="fluid"
+        >
           <ul>
             {canvasItems.map((item) => (
               <EditableSection key={item.id} id={item.id} onRemove={onRemove}>

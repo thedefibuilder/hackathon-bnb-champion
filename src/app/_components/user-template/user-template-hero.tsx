@@ -6,7 +6,7 @@ import CategoryTemplateFilter from "../template/category-template-filter";
 
 export default function UserTemplateHero() {
   return (
-    <Container className="rounded-[16px]">
+    <Container className="rounded-[16px]" variant="fluid">
       <div className="h-6" />
       <Row>
         <Col lg={10}>
@@ -26,7 +26,7 @@ export default function UserTemplateHero() {
             <CategoryTemplateFilter />
           </div>
         </Col>
-        <Col lg={2} className="bg-user-template-header-section rounded-[16px]">
+        <Col lg={2} className="bg-second-place rounded-[16px]">
           <div className="h-2" />
           <Link
             className="text-[40px] font-bold text-primary hover:no-underline"
