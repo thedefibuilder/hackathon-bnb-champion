@@ -42,8 +42,9 @@
 
     --primary: 119, 58%, 55%;
     --primary-light: 117, 79%, 76%;
-
     --primary-foreground: 284, 79%, 7%;
+    --primary-dark: 0, 0%, 5%;
+    --primary-background: 0, 0%, 10%;
 
     --secondary: 24, 97%, 65%;
     --secondary-dark: 23, 81%, 15%;

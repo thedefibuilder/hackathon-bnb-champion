@@ -11,6 +11,7 @@ import {
 } from "@/lib/customize-options";
 import { featureNames, moduleFeatures } from "@/lib/features";
 import { moduleNames } from "@/lib/modules";
+import { describe } from "node:test";
 
 export const createProjectSchema = z.object({
   name: z
@@ -81,4 +82,13 @@ export const dappSetting = z.object({
       [ESocialNames.Instagram]: z.string().url().optional(),
     })
     .optional(),
+});
+
+export const uploadeTemplate = z.object({
+  category: z.string(),
+  title: z.string(),
+  price: z.string(),
+  description: z.string(),
+  zip: z.string(),
+  image: z.string(),
 });
