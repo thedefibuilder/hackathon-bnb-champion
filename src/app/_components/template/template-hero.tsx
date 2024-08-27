@@ -1,18 +1,7 @@
 import React from "react";
 
-import { Sparkle } from "lucide-react";
 import Image from "next/image";
-import { Button } from "src/components/ui/button";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "src/components/ui/form";
-import BannerContainer from "src/components/common/banner-container";
 import { Col, Row } from "src/components/common/grid";
-import { Input } from "src/components/ui/input";
 import WordRotate from "src/components/magicui/word-rotate";
 import TemplateFilter from "./template-filter";
 
