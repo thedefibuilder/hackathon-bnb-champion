@@ -44,10 +44,10 @@ export default function LeaderboardPlacement() {
   return (
     <Row>
       {data.map((user, index) => (
-        <Col lg={4} key={index}>
+        <Col lg={4} md={2} key={index}>
           <div
             className={cn("rounded-[16px]", {
-              "bg-first-place -mt-8 h-[400px]": user.place === "first",
+              "-mt-8 h-[400px] bg-first-place": user.place === "first",
               "bg-second-place": user.place === "second",
               "bg-third-place": user.place === "third",
             })}

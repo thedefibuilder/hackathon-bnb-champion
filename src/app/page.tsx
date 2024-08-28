@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -23,18 +23,18 @@ const Templates = dynamic(() => import("./_components/template/templates"), {
   ssr: false,
 });
 
-
 export default function HomePage() {
   const form = useForm<TCategoryFilter>();
 
   return (
     <Form {...form}>
       <form>
-      <div className="h-12" />
-      <TemplateHero />
-      <div className="h-12" />
-      <Templates />
-      <div className="h-20" />
+        <div className="h-12 md:h-8" />
+        <TemplateHero />
+        <div className="h-12 md:h-8" />
+
+        <Templates />
+        <div className="h-12 md:h-8" />
       </form>
     </Form>
   );

@@ -25,14 +25,14 @@ export default function Templates() {
         <Col>
           <div className="flex items-center gap-3 text-2xl text-primary">
             <IconFlame stroke={2} className="h-8 w-8" />
-            <h2 className="font-meidum">All Templates</h2>
+            <h2 className="font-medium">All Templates</h2>
           </div>
         </Col>
       </Row>
       <div className="h-12" />
       <Row>
         {Object.values(templateItemsMap).map((item) => (
-          <Col lg={3}>
+          <Col lg={3} md={2}>
             <TemplateCard key={item.id} item={item} />
           </Col>
         ))}
@@ -42,14 +42,14 @@ export default function Templates() {
         <Col>
           <div className="flex items-center gap-3 text-2xl text-primary">
             <IconPokerChip stroke={2} className="h-8 w-8" />
-            <h2 className="font-meidum">Token Landing Page</h2>
+            <h2 className="font-medium">Token Landing Page</h2>
           </div>
         </Col>
       </Row>
       <div className="h-12" />
       <Row>
         {Object.values(tokenItems).map((item) => (
-          <Col lg={3}>
+          <Col lg={3} md={2}>
             <TemplateCard key={item.id} item={item} />
           </Col>
         ))}
@@ -59,14 +59,14 @@ export default function Templates() {
         <Col>
           <div className="flex items-center gap-3 text-2xl text-primary">
             <IconPhotoHeart stroke={2} className="h-8 w-8" />
-            <h2 className="font-meidum">NFT Collection Page</h2>
+            <h2 className="font-medium">NFT Collection Page</h2>
           </div>
         </Col>
       </Row>
       <div className="h-12" />
       <Row>
         {Object.values(enftItems).map((item) => (
-          <Col lg={3}>
+          <Col lg={3} md={2}>
             <TemplateCard key={item.id} item={item} />
           </Col>
         ))}
@@ -76,14 +76,14 @@ export default function Templates() {
         <Col>
           <div className="flex items-center gap-3 text-2xl text-primary">
             <IconArchive stroke={2} className="h-8 w-8" />
-            <h2 className="font-meidum">DAO Voting dApp</h2>
+            <h2 className="font-medium">DAO Voting dApp</h2>
           </div>
         </Col>
       </Row>
       <div className="h-12" />
       <Row>
         {Object.values(daoItem).map((item) => (
-          <Col lg={3}>
+          <Col lg={3} md={2}>
             <TemplateCard key={item.id} item={item} />
           </Col>
         ))}
