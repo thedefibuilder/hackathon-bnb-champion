@@ -21,8 +21,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function NftA() {
   const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
-  const projectName = dappSettings.projectName;
-  const fonts = dappSettings.fontOption;
+  const projectName = dappSettings.projectName || "Project Name";
+  const fonts = dappSettings.fontOption || "Inter";
   const colors = useDappColors(dappSettings.colorOption);
 
   useEffect(() => {

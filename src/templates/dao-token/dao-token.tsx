@@ -13,8 +13,10 @@ import { useEffect } from "react";
 import WebFont from "webfontloader";
 
 export default function DaoToken() {
-  const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
-  const projectName = dappSettings.projectName;
+  const dappSettings = JSON.parse(
+    localStorage.getItem("dappSettings") ||
+      "{fontOption: Inter, colorOption: Twilight}",
+  );
   const fonts = dappSettings.fontOption;
   const colors = useDappColors(dappSettings.colorOption);
 
