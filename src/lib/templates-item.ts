@@ -16,7 +16,8 @@ const nftA: TTemplateItem = {
   name: "Nft A",
   author: "by Myspace Tom ",
   image: "/nft1.png",
-  livePreview: "/preview/nft-a",
+  livePreview:
+    "https://gnfd-testnet-sp3.nodereal.io/view/barabula-website-test/nft-asd/index.html",
   rating: 4.5,
   price: 60,
   category: "nft",
@@ -27,7 +28,8 @@ const nftB: TTemplateItem = {
   name: "Nft B",
   author: "by Roland  Oanca",
   image: "/NFTB.png",
-  livePreview: "/preview/nft-b",
+  livePreview:
+    "https://gnfd-testnet-sp3.nodereal.io/view/barabula-website-test/nft-b/index.html",
   rating: 4.5,
   price: 80,
   category: "nft",
@@ -38,7 +40,8 @@ const nftC: TTemplateItem = {
   name: "Nft C",
   author: "by Alex",
   image: "/nft-c-thumbnail.png",
-  livePreview: "/preview/nft-c",
+  livePreview:
+    "https://gnfd-testnet-sp3.nodereal.io/view/barabula-website-test/nft-c/index.html",
   rating: 5,
   price: 100,
   category: "nft",
@@ -49,7 +52,8 @@ const tokenA: TTemplateItem = {
   name: "Token A",
   author: "by Alex",
   image: "/token-a-thumbnail.png",
-  livePreview: "/preview/token-a",
+  livePreview:
+    "https://gnfd-testnet-sp3.nodereal.io/view/barabula-website-test/token-a/index.html",
   rating: 4,
   price: 50,
   category: "token",
@@ -60,7 +64,8 @@ const tokenB: TTemplateItem = {
   name: "Token B",
   author: "by Roland",
   image: "/token-b-thumbnail.png",
-  livePreview: "/preview/token-b",
+  livePreview:
+    "https://gnfd-testnet-sp3.nodereal.io/view/barabula-website-test/token-b/index.html",
   rating: 4,
   price: 70,
   category: "token",
@@ -71,7 +76,8 @@ const tokenC: TTemplateItem = {
   name: "Token C",
   author: "by Alex",
   image: "/token-c-thumbnail.png",
-  livePreview: "/preview/token-c",
+  livePreview:
+    "https://gnfd-testnet-sp3.nodereal.io/view/barabula-website-test/token-c/index.html",
   rating: 4.2,
   price: 60,
   category: "token",
@@ -82,7 +88,8 @@ const daoToken: TTemplateItem = {
   name: "Dao Token",
   author: "by Roland",
   image: "/dao-thumbnail.png",
-  livePreview: "/preview/token-c",
+  livePreview:
+    "https://gnfd-testnet-sp3.nodereal.io/view/barabula-website-test/dao/index.html",
   rating: 4.3,
   price: 60,
   category: "dao",
