@@ -20,6 +20,12 @@ import { IconEqual } from "@tabler/icons-react";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { uploadeTemplate } from "@/lib/schemas/create-project";
+import useWriteContract from "@/lib/hooks/use-write-contract";
+import { bnbChainTestnet } from "@/lib/types/chain";
+import { greenPressHubAddress, greePressHubAbi } from "@/lib/greenpress-hub";
+import { parseEther } from "viem";
+import useReadContract from "@/lib/hooks/use-read-contract";
+import { useToast } from "@/components/ui/use-toast";
 
 type TUploadeTemplateFormProps = {
   bnbRate: number | null;
@@ -35,6 +41,11 @@ export default function UploadeTemplateForm({
   });
   const { control, handleSubmit, watch, register } = methods;
   const usdValue = watch("price");
+  const { response: relayFee, readContract: readRelayFee } =
+    useReadContract<bigint>(bnbChainTestnet);
+  const { writeContract: publishTemplate, response } =
+    useWriteContract(bnbChainTestnet);
+  const { toast } = useToast();
 
   useEffect(() => {
     if (bnbRate && usdValue) {
@@ -44,8 +55,27 @@ export default function UploadeTemplateForm({
     }
   }, [bnbRate, usdValue]);
 
+  useEffect(() => {
+    readRelayFee(greePressHubAbi, "getRelayFee", greenPressHubAddress);
+  }, []);
+
+  useEffect(() => {
+    toast({
+      title: "Template uploaded",
+      description: "Your template has been uploaded successfully.",
+    });
+  }, [response]);
+
   const onSubmit = (data: z.infer<typeof uploadeTemplate>) => {
     console.log(data);
+
+    publishTemplate(
+      greePressHubAbi,
+      "publishTemplate",
+      [data.title, parseEther(bnbValue)],
+      greenPressHubAddress,
+      relayFee ? relayFee : parseEther("0.01"),
+    );
   };
 
   return (
