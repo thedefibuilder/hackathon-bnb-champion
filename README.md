@@ -29,8 +29,9 @@ GreenPress is built on three main components:
 Repository Links:
 1. [Frontend](https://github.com/thedefibuilder/hackathon-bnb-champion)
 2. [Backend](https://github.com/thedefibuilder/hackathon-bnb-champion-backend) 
-3. [Smart Contracts](https://github.com/thedefibuilder/hackathon-bnb-champion-contracts
-)
+3. [Smart Contracts](https://github.com/thedefibuilder/hackathon-bnb-champion-contracts)
+
+Contract Address: [GreenPressHub](https://testnet.bscscan.com/address/0x1870e8cb883079af3860f7c56a6acc65418f557b)
 
 # Workflows
 
