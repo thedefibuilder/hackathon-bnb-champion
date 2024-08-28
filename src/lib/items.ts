@@ -16,10 +16,21 @@ export enum TemplatesName {
   tokenB = "token-b",
   tokenC = "token-c",
   daoToken = "dao-token",
+  blog = "blog",
+}
+
+export enum CustomizableTemplatesName {
+  nftA = "nft-a",
+  nftB = "nft-b",
+  nftC = "nft-c",
+  tokenA = "token-a",
+  tokenB = "token-b",
+  tokenC = "token-c",
+  daoToken = "dao-token",
 }
 
 export enum UserTemplatesName {
-  BlogA = "BlogA",
+  DaoToken = "DaoToken",
   NftA = "NftA",
   TokenA = "TokenA",
   BlogB = "BlogB",

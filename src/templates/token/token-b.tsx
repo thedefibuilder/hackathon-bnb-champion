@@ -12,8 +12,9 @@ import { Sparkle } from "lucide-react";
 import { IconCheck, IconPencil, IconX } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import WebFont from "webfontloader";
+import { IdProps } from "@/lib/customizableTemplateItems";
 
-export default function TokenB() {
+export default function TokenB({ id }: IdProps) {
   const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
   const projectName = dappSettings.projectName || "Project Name";
   const fonts = dappSettings.fontOption || "Inter";

@@ -11,8 +11,9 @@ import { IconMountain } from "@tabler/icons-react";
 import useDappColors from "@/lib/hooks/use-dapp-colors";
 import { useEffect } from "react";
 import WebFont from "webfontloader";
+import { IdProps } from "@/lib/customizableTemplateItems";
 
-export default function DaoToken() {
+export default function DaoToken({ id }: IdProps) {
   const dappSettings = JSON.parse(
     localStorage.getItem("dappSettings") ||
       "{fontOption: Inter, colorOption: Twilight}",

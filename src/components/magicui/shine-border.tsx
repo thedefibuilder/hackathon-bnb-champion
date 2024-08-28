@@ -34,7 +34,7 @@ export default function ShineBorder({
   return (
     <div
       className={cn(
-        "relative min-h-[60px] w-fit min-w-[300px] place-items-center bg-white text-black dark:text-white",
+        "relative place-items-center bg-white text-black dark:text-white",
         className,
       )}
     >

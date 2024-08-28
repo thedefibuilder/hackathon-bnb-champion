@@ -1,4 +1,6 @@
 "use client";
+
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ToggleGroup, ToggleGroupItem } from "src/components/ui/toggle-group";
 import {
@@ -46,6 +48,12 @@ export default function CategoryTemplateFilter() {
   const { setValue, watch } = useFormContext<TCategoryFilter>();
 
   const selectedCategory = watch("category");
+
+  useEffect(() => {
+    if (!selectedCategory) {
+      setValue("category", "Show All");
+    }
+  }, [selectedCategory, setValue]);
 
   const filteredOptions =
     pathname === "/manage/upload"

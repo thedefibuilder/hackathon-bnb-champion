@@ -1,25 +1,44 @@
+"use client";
+
 import { Col, Row } from "src/components/common/grid";
 import {
   IconArchive,
   IconFlame,
   IconPhotoHeart,
   IconPokerChip,
+  IconWritingSign,
 } from "@tabler/icons-react";
 import TemplateCard from "./template-card";
 import { templateItemsMap } from "@/lib/templates-item";
+import { useFormContext } from "react-hook-form";
+import { TCategoryFilter } from "@/lib/schemas/category-filter";
+
+export const categoryMap: { [key: string]: string } = {
+  "Token Landing Page": "token",
+  "NFT Collection Page": "nft",
+  "DAO Voting dApp": "dao",
+  "Web3 Blogging": "blog",
+  "Show All": "all",
+};
 
 export default function Templates() {
-  const tokenItems = Object.values(templateItemsMap).filter(
-    (item) => item.category === "token",
-  );
-  const enftItems = Object.values(templateItemsMap).filter(
-    (item) => item.category === "nft",
-  );
-  const daoItem = Object.values(templateItemsMap).filter(
-    (item) => item.category === "dao",
-  );
+  const { watch } = useFormContext<TCategoryFilter>();
+  const selectedCategory = watch("category");
 
-  return (
+  const allItems = Object.values(templateItemsMap);
+  const categoryKey = categoryMap[selectedCategory] || "all";
+
+  const filteredItems =
+    categoryKey !== "all"
+      ? allItems.filter((item) => item.category === categoryKey)
+      : allItems;
+
+  const tokenItems = allItems.filter((item) => item.category === "token");
+  const enftItems = allItems.filter((item) => item.category === "nft");
+  const daoItems = allItems.filter((item) => item.category === "dao");
+  const blogItems = allItems.filter((item) => item.category === "blog");
+
+  return !selectedCategory || selectedCategory === "Show All" ? (
     <>
       <Row>
         <Col>
@@ -31,9 +50,9 @@ export default function Templates() {
       </Row>
       <div className="h-12" />
       <Row>
-        {Object.values(templateItemsMap).map((item) => (
-          <Col lg={3} md={2}>
-            <TemplateCard key={item.id} item={item} />
+        {allItems.map((item) => (
+          <Col lg={3} md={2} key={item.id}>
+            <TemplateCard item={item} />
           </Col>
         ))}
       </Row>
@@ -48,9 +67,9 @@ export default function Templates() {
       </Row>
       <div className="h-12" />
       <Row>
-        {Object.values(tokenItems).map((item) => (
-          <Col lg={3} md={2}>
-            <TemplateCard key={item.id} item={item} />
+        {tokenItems.map((item) => (
+          <Col lg={3} md={2} key={item.id}>
+            <TemplateCard item={item} />
           </Col>
         ))}
       </Row>
@@ -65,9 +84,9 @@ export default function Templates() {
       </Row>
       <div className="h-12" />
       <Row>
-        {Object.values(enftItems).map((item) => (
-          <Col lg={3} md={2}>
-            <TemplateCard key={item.id} item={item} />
+        {enftItems.map((item) => (
+          <Col lg={3} md={2} key={item.id}>
+            <TemplateCard item={item} />
           </Col>
         ))}
       </Row>
@@ -82,9 +101,44 @@ export default function Templates() {
       </Row>
       <div className="h-12" />
       <Row>
-        {Object.values(daoItem).map((item) => (
-          <Col lg={3} md={2}>
-            <TemplateCard key={item.id} item={item} />
+        {daoItems.map((item) => (
+          <Col lg={3} md={2} key={item.id}>
+            <TemplateCard item={item} />
+          </Col>
+        ))}
+      </Row>
+      <Row>
+        <Col>
+          <div className="flex items-center gap-3 text-2xl text-primary">
+            <IconWritingSign stroke={2} className="h-8 w-8" />
+            <h2 className="font-medium">Blog</h2>
+          </div>
+        </Col>
+      </Row>
+      <div className="h-12" />
+      <Row>
+        {blogItems.map((item) => (
+          <Col lg={3} md={2} key={item.id}>
+            <TemplateCard item={item} />
+          </Col>
+        ))}
+      </Row>
+    </>
+  ) : (
+    <>
+      <Row>
+        <Col>
+          <div className="flex items-center gap-3 text-2xl text-primary">
+            <IconFlame stroke={2} className="h-8 w-8" />
+            <h2 className="font-medium">{`${selectedCategory} Templates`}</h2>
+          </div>
+        </Col>
+      </Row>
+      <div className="h-12" />
+      <Row>
+        {filteredItems.map((item) => (
+          <Col lg={3} md={2} key={item.id}>
+            <TemplateCard item={item} />
           </Col>
         ))}
       </Row>
