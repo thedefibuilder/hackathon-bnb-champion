@@ -22,8 +22,6 @@ export default function useBuyTemplate(
   const { address, chainId } = useAccount();
   const { switchChainAsync } = useSwitchChain();
 
-  const { toast } = useToast();
-
   const [publicClient, setPublicClient] = useState<PublicClient | null>(null);
   const [walletClient, setWalletClient] = useState<WalletClient | null>(null);
 
@@ -78,7 +76,9 @@ export default function useBuyTemplate(
   }
 
   useEffect(() => {
-    fetchAllData();
+    if(publicClient) {
+      fetchAllData();
+    }
   }, [publicClient]);
 
   const buyTemplate = useCallback(async () => {
