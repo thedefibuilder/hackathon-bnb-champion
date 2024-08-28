@@ -1,10 +1,15 @@
+"use client";
 import { Col, Container, Row } from "@/components/common/grid";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import Link from "next/link";
 import CategoryTemplateFilter from "../template/category-template-filter";
+import { Form } from "@/components/ui/form";
+import { useForm } from "react-hook-form";
 
 export default function UserTemplateHero() {
+  const form = useForm();
+
   return (
     <Container className="rounded-[16px]" variant="fluid">
       <div className="h-6" />
@@ -23,10 +28,14 @@ export default function UserTemplateHero() {
           </div>
           <div className="h-8" />
           <div className="w-[80%]">
-            <CategoryTemplateFilter />
+            <Form {...form}>
+              <form>
+                <CategoryTemplateFilter />
+              </form>
+            </Form>
           </div>
         </Col>
-        <Col lg={2} className="bg-second-place rounded-[16px]">
+        <Col lg={2} className="rounded-[16px] bg-second-place">
           <div className="h-2" />
           <Link
             className="text-[40px] font-bold text-primary hover:no-underline"

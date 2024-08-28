@@ -86,6 +86,7 @@ export default function TemplateCard({ item }: TTemplateCardProps) {
         <Button
           onClick={buyTemplate}
           className="absolute bottom-14 right-6 flex h-20 w-20 flex-col items-center justify-center rounded-[8px] bg-primary p-2"
+          type='button'
         >
           <p className="text-2xl">
             <span>$</span>
