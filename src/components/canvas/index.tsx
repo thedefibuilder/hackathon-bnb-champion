@@ -1,4 +1,4 @@
-import React, { act } from "react";
+import React from "react";
 import { TCanvasItem } from "@/lib/canvas-item";
 
 import DropArea from "./drop-area";
@@ -16,7 +16,7 @@ export type TCanvasProps = {
 export default function Canvas({ canvasItems, onRemove }: TCanvasProps) {
   return (
     <>
-      <div className="fixed right-4 top-16 z-40 mt-4 flex h-20 w-[75vw] items-center justify-end gap-4 bg-background md:w-[50vw] sm:w-[20vw]">
+      <div className="fixed right-4 top-16 z-40 mt-4 flex h-20 w-[75vw] items-center justify-end gap-4 bg-[#000C03] md:w-[50vw] sm:w-[20vw]">
         <Button
           className="flex items-center gap-3"
           variant="outline"

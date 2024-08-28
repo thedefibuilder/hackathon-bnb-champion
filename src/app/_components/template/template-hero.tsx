@@ -8,14 +8,14 @@ import TemplateFilter from "./template-filter";
 export default function TemplateHero() {
   return (
     <Row className="relative">
-      <Col lg={7} md={4}>
+      <Col lg={7}>
         <div className="w-full text-white">
-          <h1 className="text-2xl font-bold lg:w-full sm:text-2xl xl:text-[80px]">
+          <h1 className="text-6xl font-bold lg:w-full md:leading-tight sm:text-2xl xl:text-7xl">
             <span className="flex items-center gap-8">
               Your{" "}
               <span className="text-primary">
                 <WordRotate
-                  className="text-3xl font-extrabold lg:w-full sm:text-2xl xl:text-[80px]"
+                  className="text-6xl font-extrabold lg:w-full sm:text-2xl xl:text-7xl"
                   words={[
                     "Web3 Blog",
                     "Token Page",
@@ -37,6 +37,7 @@ export default function TemplateHero() {
         </div>
       </Col>
       <Col lg={5}>
+        <div className="md:h-8" />
         <Image
           src="/template-main.png"
           alt="Hero Main"

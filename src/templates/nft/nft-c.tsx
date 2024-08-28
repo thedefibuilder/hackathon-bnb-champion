@@ -1,4 +1,5 @@
 "use client";
+import { IdProps } from "@/lib/customizableTemplateItems";
 import useDappColors from "@/lib/hooks/use-dapp-colors";
 import {
   IconCalendarMonth,
@@ -10,7 +11,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import WebFont from "webfontloader";
 
-export default function NftC() {
+export default function NftC({ id }: IdProps) {
   const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
   const projectName = dappSettings.projectName || "Project Name";
   const fonts = dappSettings.fontOption || "Inter";

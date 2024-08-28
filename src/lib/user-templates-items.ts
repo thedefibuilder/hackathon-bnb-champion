@@ -18,80 +18,80 @@ export type TUserTemplateItem = {
   isPublish: boolean;
 };
 
-const BlogA: TUserTemplateItem = {
-  id: "user-template-a",
-  title: "My Blog",
-  icon: IconWritingSign,
-  author: "by Myspace Tom ",
-  avatar: "https://github.com/shadcn.png",
-  image: "/placeholder.png",
-  category: "blog",
-  lastEdit: "August 21, 2024",
-  isPublish: false,
-};
-
 const NftA: TUserTemplateItem = {
-  id: "user-template-b",
+  id: "nft-c",
   title: "My Nft",
   icon: IconPhotoHeart,
   author: "by Oanca Roland",
   avatar: "https://github.com/shadcn.png",
-  image: "/nft-a.png",
+  image: "/nft-c-thumbnail.png",
   category: "nft",
   lastEdit: "August 21, 2024",
   isPublish: true,
 };
 
+const DaoToken: TUserTemplateItem = {
+  id: "dao-token",
+  title: "My DaoToken",
+  icon: IconPhotoHeart,
+  author: "by Oanca Roland",
+  avatar: "https://github.com/shadcn.png",
+  image: "/dao-thumbnail.png",
+  category: "dao",
+  lastEdit: "August 21, 2024",
+  isPublish: true,
+};
+
 const TokenA: TUserTemplateItem = {
-  id: "user-template-b",
+  id: "token-b",
   title: "My Token",
   icon: IconPokerChip,
   author: "by Alex",
   avatar: "https://github.com/shadcn.png",
-  image: "/token-a.png",
+  image: "/token-b-thumbnail.png",
   category: "token",
   lastEdit: "August 6, 2024",
   isPublish: false,
 };
 
 const BlogB: TUserTemplateItem = {
-  id: "user-template-a",
+  id: "blog",
   title: "My Blog",
   icon: IconWritingSign,
   author: "by Myspace Tom ",
   avatar: "https://github.com/shadcn.png",
-  image: "/placeholder.png",
+  image: "/blog-thumbnail.png",
   category: "blog",
   lastEdit: "August 21, 2024",
   isPublish: false,
 };
 
 const NftB: TUserTemplateItem = {
-  id: "user-template-b",
+  id: "nft-b",
   title: "My Nft",
   icon: IconPhotoHeart,
   author: "by Oanca Roland",
   avatar: "https://github.com/shadcn.png",
-  image: "/nft-b.png",
+  image: "/NFTB.png",
   category: "nft",
   lastEdit: "August 21, 2024",
   isPublish: true,
 };
 
 const TokenB: TUserTemplateItem = {
-  id: "user-template-b",
+  id: "token-c",
   title: "My Token",
   icon: IconPokerChip,
   author: "by Alex",
   avatar: "https://github.com/shadcn.png",
-  image: "/token-b.png",
+  image: "/token-c-thumbnail.png",
   category: "token",
   lastEdit: "August 6, 2024",
   isPublish: false,
 };
 
 const userTemplateItemsMap: Record<UserTemplatesName, TUserTemplateItem> = {
-  [UserTemplatesName.BlogA]: BlogA,
+  [UserTemplatesName.DaoToken]: DaoToken,
   [UserTemplatesName.NftA]: NftA,
   [UserTemplatesName.TokenA]: TokenA,
   [UserTemplatesName.BlogB]: BlogB,
@@ -101,4 +101,4 @@ const userTemplateItemsMap: Record<UserTemplatesName, TUserTemplateItem> = {
 
 export type TTemplatesForm = Record<string, TUserTemplateItem | undefined>;
 
-export { userTemplateItemsMap, BlogA, NftA, TokenA, BlogB, NftB, TokenB };
+export { userTemplateItemsMap, NftA, TokenA, BlogB, NftB, TokenB };

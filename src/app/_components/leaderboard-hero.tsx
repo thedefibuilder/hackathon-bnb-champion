@@ -20,7 +20,7 @@ export default function LeaderboardHero() {
         <div className="h-12" />
 
         <div className="flex items-center gap-6">
-          <div className="relative w-52 rounded-[16px] bg-background px-4">
+          <div className="relative rounded-[16px] bg-background px-4 lg:w-52 md:w-1/2">
             <Image
               src="/account-box.png"
               alt="account-box"
@@ -41,7 +41,7 @@ export default function LeaderboardHero() {
             <div className="h-4" />
           </div>
 
-          <div className="relative w-52 rounded-[16px] bg-background px-4">
+          <div className="relative rounded-[16px] bg-background px-4 lg:w-52 md:w-1/2">
             <Image
               src="/total-sales.png"
               alt="total-sales"
@@ -51,7 +51,7 @@ export default function LeaderboardHero() {
             />
             <div className="h-4" />
             <div className="relative z-20">
-              <h2 className="w-1/2 text-[32px] font-medium text-primary">
+              <h2 className="text-[32px] font-medium text-primary lg:w-1/2">
                 Total Sales
               </h2>
               <div className="h-8" />
@@ -64,6 +64,7 @@ export default function LeaderboardHero() {
         </div>
       </Col>
       <Col lg={8}>
+        <div className="md:h-20" />
         <LeaderboardPlacement />
       </Col>
     </Row>

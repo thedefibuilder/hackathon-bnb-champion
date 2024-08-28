@@ -25,20 +25,21 @@ export default function UserTemplateCard({ item }: TUserTemplateCardProps) {
   return (
     <Link href={`/manage/${item.id}`}>
       <ShineBorder
-        className="w-full justify-start !rounded-[16px] rounded border bg-transparent shadow-xl"
+        className="justify-start !rounded-[16px] rounded border bg-transparent shadow-xl lg:w-full"
         color={["#4BCE48", "#97f294", "#FFBE7B"]}
       >
         <div className="flex items-center gap-3 rounded-t-[16px] bg-background px-4 py-2">
           {React.createElement(icon, {
             className: "text-primary h-10 h-10",
           })}
-          <p className="text-3xl">{title}</p>
+          <p className="text-2xl">{title}</p>
         </div>
         <div className="h-4" />
-        <div className="flex items-center justify-between px-4">
+        <div className="flex justify-between px-4 lg:items-center md:flex-col">
           <p className="font-bold text-primary">
             Last edit: <span>{lastEdit}</span>
           </p>
+          <div className="md:h-4" />
           {isPublish ? (
             <div className="flex items-center gap-3 rounded-full bg-primary px-2 py-1 text-black">
               <div className="h-3 w-3 rounded-full bg-secondary-dark"></div>
@@ -53,25 +54,25 @@ export default function UserTemplateCard({ item }: TUserTemplateCardProps) {
         </div>
         <div className="h-4" />
 
-        <div className="relative w-full">
+        <div className="relative w-full rounded-[16px]">
           <Image
             src={image}
             alt="NFTB.png"
             width={400}
-            height={400}
-            className="rounded-t-[16px] px-4"
+            height={200}
+            className="rounded-[16px] px-4 lg:h-[300px]"
           />
         </div>
         <div className="h-6" />
-        <div className="flex items-center justify-between px-4 text-[16px] font-bold text-[#989898]">
-          <div>
+        <div className="flex justify-between px-4 text-[16px] font-bold text-[#989898] lg:items-center md:flex-col">
+          <div className="md:hidden">
             <p>Bought on:</p>
-            <div className="h-1" />
+            <div className="h-1 md:hidden" />
             <p>{lastEdit}</p>
           </div>
-          <div className="h-12 w-[1px] bg-[#989898]" />
+          <div className="h-12 w-[1px] bg-[#989898] md:hidden" />
           <div>
-            <p>Created by:</p>
+            <p className="md:hidden">Created by:</p>
             <div className="h-1" />
             <div className="flex items-center gap-3">
               <Avatar>

@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -29,11 +30,11 @@ export default function HomePage() {
   return (
     <Form {...form}>
       <form>
-        <div className="h-12" />
+        <div className="h-12 md:h-8" />
         <TemplateHero />
-        <div className="h-12" />
+        <div className="h-12 md:h-8" />
         <Templates />
-        <div className="h-20" />
+        <div className="h-12 md:h-8" />
       </form>
     </Form>
   );

@@ -1,4 +1,6 @@
 "use client";
+
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ToggleGroup, ToggleGroupItem } from "src/components/ui/toggle-group";
 import {
@@ -10,7 +12,7 @@ import {
   TablerIcon,
 } from "@tabler/icons-react";
 import React from "react";
-import {TCategoryFilter} from "@/lib/schemas/category-filter";
+import { TCategoryFilter } from "@/lib/schemas/category-filter";
 import { useFormContext } from "react-hook-form";
 
 export type TTemplateFilter = {
@@ -47,6 +49,12 @@ export default function CategoryTemplateFilter() {
 
   const selectedCategory = watch("category");
 
+  useEffect(() => {
+    if (!selectedCategory) {
+      setValue("category", "Show All");
+    }
+  }, [selectedCategory, setValue]);
+
   const filteredOptions =
     pathname === "/manage/upload"
       ? filterOptions.filter((option) => option.text !== "Show All")
@@ -55,7 +63,7 @@ export default function CategoryTemplateFilter() {
   return (
     <ToggleGroup
       type="single"
-      className="flex items-center justify-between"
+      className="flex items-center justify-start gap-2"
       value={selectedCategory}
       onValueChange={(value: string) => {
         if (value) {
@@ -68,9 +76,9 @@ export default function CategoryTemplateFilter() {
           key={index}
           value={filterItem.text}
           aria-label={filterItem.text}
-          className="flex h-8 items-center justify-center border border-primary-light px-2 py-6 text-primary-light"
+          className="flex items-center justify-center gap-1 border border-primary-light px-2 text-xs text-primary-light lg:h-8 lg:py-6 md:truncate"
         >
-          {React.createElement(filterItem.icon, { className: "mr-2" })}
+          {React.createElement(filterItem.icon, { className: "lg:mr-2" })}
           {filterItem.text}
         </ToggleGroupItem>
       ))}

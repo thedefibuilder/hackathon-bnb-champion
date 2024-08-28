@@ -44,10 +44,10 @@ export default function LeaderboardPlacement() {
   return (
     <Row>
       {data.map((user, index) => (
-        <Col lg={4} key={index}>
+        <Col lg={4} md={2} key={index}>
           <div
             className={cn("rounded-[16px]", {
-              "bg-first-place -mt-8 h-[400px]": user.place === "first",
+              "-mt-8 h-[400px] bg-first-place": user.place === "first",
               "bg-second-place": user.place === "second",
               "bg-third-place": user.place === "third",
             })}
@@ -59,31 +59,41 @@ export default function LeaderboardPlacement() {
                 alt={`${user.name}-avatar`}
                 width={170}
                 height={170}
+                className="md:h-32 md:w-32"
               />
-              <p className="text-2xl">{user.name}</p>
+              <p className="text-2xl md:text-xl">{user.name}</p>
               <div className="h-2" />
+
               <Image src={user.stars} alt="stars" width={136} height={24} />
             </div>
             <div className="h-6" />
             <div className="flex items-center justify-evenly">
               <div className="flex items-center gap-2 text-[#989898]">
                 <IconTemplate stroke={2} />
-                <p className="font-bold">{user.templates} templates</p>
+                <p className="font-bold">
+                  {user.templates} <span className="md:hidden">templates</span>
+                </p>
               </div>
               <div className="flex items-center gap-2 text-[#989898]">
                 <IconShoppingCart stroke={2} />
-                <p className="font-bold">{user.sales} sales</p>
+                <p className="font-bold">
+                  {user.sales} <span className="md:hidden">sales</span>
+                </p>
               </div>
             </div>
             <div className="h-2" />
             <div className="flex items-center justify-evenly">
               <div className="flex items-center gap-2 text-[#989898]">
                 <IconMessageUser stroke={2} />
-                <p className="font-bold">{user.reviews} reviews</p>
+                <p className="font-bold">
+                  {user.reviews} <span className="md:hidden">reviews</span>
+                </p>
               </div>
               <div className="flex items-center gap-2 text-[#989898]">
                 <IconEye stroke={2} />
-                <p className="font-bold">{user.views} views</p>
+                <p className="font-bold">
+                  {user.views} <span className="md:hidden">views</span>
+                </p>
               </div>
             </div>
             <div className="h-4" />

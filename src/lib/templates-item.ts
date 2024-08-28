@@ -95,6 +95,17 @@ const daoToken: TTemplateItem = {
   category: "dao",
 };
 
+const blog: TTemplateItem = {
+  id: "blog",
+  name: "Blog",
+  author: "by Roland",
+  image: "/blog-thumbnail.png",
+  livePreview: `/manage/blog`,
+  rating: 4.3,
+  price: 60,
+  category: "blog",
+};
+
 const templateItemsMap: Record<TemplatesName, TTemplateItem> = {
   [TemplatesName.nftA]: nftA,
   [TemplatesName.nftB]: nftB,
@@ -103,8 +114,9 @@ const templateItemsMap: Record<TemplatesName, TTemplateItem> = {
   [TemplatesName.tokenB]: tokenB,
   [TemplatesName.tokenC]: tokenC,
   [TemplatesName.daoToken]: daoToken,
+  [TemplatesName.blog]: blog,
 };
 
 export type TTemplatesForm = Record<string, TTemplateItem | undefined>;
 
-export { templateItemsMap, nftA, nftB, nftC, tokenA, tokenB, tokenC };
+export { templateItemsMap, nftA, nftB, nftC, tokenA, tokenB, tokenC, blog };

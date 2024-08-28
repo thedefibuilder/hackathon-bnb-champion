@@ -4,6 +4,7 @@ import { LogoWithTitle } from "./logo";
 import DappWalletButton from "src/components/dapp-wallet-button";
 import { navRoutes } from "@/lib/routes/nav";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   return (
@@ -16,7 +17,12 @@ export default function Header() {
             <Link
               key={index}
               href={route.path}
-              className="text-white hover:text-primary"
+              className={cn(
+                "text-white hover:text-primary",
+                route.name === "Find out more on DoraHacks"
+                  ? "rounded bg-primary-light px-4 text-black lg:py-2"
+                  : "",
+              )}
             >
               {route.name}
             </Link>

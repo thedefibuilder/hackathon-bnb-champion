@@ -18,8 +18,9 @@ import useDappColors from "@/lib/hooks/use-dapp-colors";
 import WebFont from "webfontloader";
 import { useEffect } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { IdProps } from "@/lib/customizableTemplateItems";
 
-export default function NftA() {
+export default function NftA({ id }: IdProps) {
   const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
   const projectName = dappSettings.projectName || "Project Name";
   const fonts = dappSettings.fontOption || "Inter";

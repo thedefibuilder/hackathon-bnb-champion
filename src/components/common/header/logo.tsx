@@ -9,7 +9,7 @@ export function LogoWithTitle() {
   return (
     <Link href={ENavRoutesPath.home}>
       <Image
-        src="/logo-title-light.png"
+        src="/greenpress-logo.png"
         alt="DeFi Builder's logo"
         width={190}
         height={30}
@@ -36,14 +36,14 @@ export function Logo({ width = 190, height = 30 }: TLogoProps) {
   return (
     <>
       <Image
-        src="/logo-title-light.png"
+        src="/greenpress-icon.svg"
         alt="DeFi Builder's logo"
         width={width}
         height={height}
-        className="hidden dark:block"
+        className="hidden h-10 w-10 dark:block"
       />
       <Image
-        src="/logo-title-light.png"
+        src="/greenpress-icon.svg"
         alt="DeFi Builder's logo"
         width={width}
         height={height}

@@ -61,6 +61,7 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
               smOffset={undefined}
             >
               <SidebarItem item={sidebarContainer} />
+              <div className="md:h-4" />
             </Col>
             <Col
               lg={6}
@@ -96,6 +97,7 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
               smOffset={undefined}
             >
               <SidebarItem item={sidebarHeading} />
+              <div className="md:h-4" />
             </Col>
             <Col
               lg={6}
@@ -118,6 +120,7 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
               smOffset={undefined}
             >
               <SidebarItem item={sidebarTextEditor} />
+              <div className="md:h-4" />
             </Col>
             <Col
               lg={6}
@@ -150,7 +153,7 @@ export default function Sidebar({ fonts }: { fonts: TFontItem[] }) {
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="flex items-center gap-3 rounded-none pb-4 data-[state=active]:border-b-[2px] data-[state=active]:border-primary"
+                className="flex items-center gap-3 rounded-none pb-4 data-[state=active]:border-b-[2px] data-[state=active]:border-primary data-[state=active]:bg-transparent"
               >
                 {tab.icon}
                 {tab.label}

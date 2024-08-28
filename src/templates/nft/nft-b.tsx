@@ -5,8 +5,9 @@ import { IconHeart, IconUser } from "@tabler/icons-react";
 import useDappColors from "@/lib/hooks/use-dapp-colors";
 import { useEffect } from "react";
 import WebFont from "webfontloader";
+import { IdProps } from "@/lib/customizableTemplateItems";
 
-export default function NftB() {
+export default function NftB({ id }: IdProps) {
   const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
   const projectName = dappSettings.projectName || "Project Name";
   const fonts = dappSettings.fontOption || "Inter";
