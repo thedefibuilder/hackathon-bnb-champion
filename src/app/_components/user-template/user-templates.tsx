@@ -5,7 +5,7 @@ import { userTemplateItemsMap } from "@/lib/user-templates-items";
 export default function UserTemplates() {
   const items = Object.values(userTemplateItemsMap);
 
-  const recentItems = items.slice(0, 3);
+  const recentItems = items.slice(0, 4);
 
   return (
     <>
@@ -37,7 +37,7 @@ export default function UserTemplates() {
       <div className="h-8" />
       <Row>
         {items.map((item) => (
-          <Col lg={4} className="mb-8" key={item.id}>
+          <Col lg={3} className="mb-8" key={item.id}>
             <UserTemplateCard item={item} />
           </Col>
         ))}

@@ -53,13 +53,13 @@ export default function UserTemplateCard({ item }: TUserTemplateCardProps) {
         </div>
         <div className="h-4" />
 
-        <div className="relative w-full">
+        <div className="relative w-full rounded-[16px]">
           <Image
             src={image}
             alt="NFTB.png"
             width={400}
-            height={400}
-            className="rounded-t-[16px] px-4"
+            height={200}
+            className="h-[300px] rounded-[16px] px-4"
           />
         </div>
         <div className="h-6" />

@@ -55,7 +55,7 @@ export default function CategoryTemplateFilter() {
   return (
     <ToggleGroup
       type="single"
-      className="flex items-center justify-between gap-2"
+      className="flex items-center justify-start gap-2"
       value={selectedCategory}
       onValueChange={(value: string) => {
         if (value) {

@@ -158,7 +158,7 @@ export default function LeaderboardTable() {
                 <TableCell>
                   <div
                     className={cn(
-                      "flex h-8 w-1/2 flex-col items-center justify-center rounded-full px-2 text-xl",
+                      "flex h-8 flex-col items-center justify-center rounded-full px-2 text-xl lg:w-1/2",
                       {
                         "bg-first-place": user.id === 1,
                         "bg-second-place": user.id === 2,
@@ -169,7 +169,7 @@ export default function LeaderboardTable() {
                     {user.sales}
                   </div>
                 </TableCell>
-                <TableCell className="flex items-center gap-2 text-2xl">
+                <TableCell className="flex items-center gap-2 lg:text-2xl md:text-xl">
                   <Image
                     src={user.image}
                     alt="user image"
@@ -179,7 +179,9 @@ export default function LeaderboardTable() {
                   {user.user}
                 </TableCell>
 
-                <TableCell className="text-2xl">{user.templates}</TableCell>
+                <TableCell className="lg:text-2xl md:text-center md:text-xl">
+                  {user.templates}
+                </TableCell>
                 <TableCell className="flex items-center gap-2">
                   {user.icons.map((Icon, index) => (
                     <Icon

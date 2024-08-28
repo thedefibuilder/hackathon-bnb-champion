@@ -33,7 +33,6 @@ export default function HomePage() {
         <div className="h-12 md:h-8" />
         <TemplateHero />
         <div className="h-12 md:h-8" />
-
         <Templates />
         <div className="h-12 md:h-8" />
       </form>
