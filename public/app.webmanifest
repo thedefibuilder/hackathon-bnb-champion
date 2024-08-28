@@ -1,8 +1,8 @@
 {
   "lang": "en-EN",
-  "name": "DeFi Builder - Modular Builder App",
-  "short_name": "DeFi Builder App",
-  "description": "Create a DeFi project and deploy it on any blockchain.",
+  "name": "GreenPress - Dapp NoCode Builder & Marketplace",
+  "short_name": "GreenPress",
+  "description": "Create a Blog, Dapp or DeFi project and deploy it BNB Greenfield.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

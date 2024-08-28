@@ -14,12 +14,10 @@ import WebFont from "webfontloader";
 import { IdProps } from "@/lib/customizableTemplateItems";
 
 export default function DaoToken({ id }: IdProps) {
-  const dappSettings = JSON.parse(
-    localStorage.getItem("dappSettings") ||
-      "{fontOption: Inter, colorOption: Twilight}",
-  );
-  const fonts = dappSettings.fontOption;
-  const colors = useDappColors(dappSettings.colorOption);
+  const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
+  const projectName = dappSettings.projectName || "Project Name";
+  const fonts = dappSettings.fontOption || "Inter";
+  const colors = useDappColors(dappSettings.colorOption || "Twilight");
 
   useEffect(() => {
     if (fonts) {

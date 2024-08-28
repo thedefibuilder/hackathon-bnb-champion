@@ -95,6 +95,7 @@ export default function UploadeTemplateForm({
               <Button
                 variant="outline"
                 className="hidden items-center gap-3 border-none text-lg text-muted-foreground lg:flex md:flex"
+                type="button"
               >
                 <ArrowLeft />
                 Back to Create

@@ -15,7 +15,7 @@ export default function NftC({ id }: IdProps) {
   const dappSettings = JSON.parse(localStorage.getItem("dappSettings") || "{}");
   const projectName = dappSettings.projectName || "Project Name";
   const fonts = dappSettings.fontOption || "Inter";
-  const colors = useDappColors(dappSettings.colorOption);
+  const colors = useDappColors(dappSettings.colorOption || "Twilight");
 
   useEffect(() => {
     if (fonts) {
