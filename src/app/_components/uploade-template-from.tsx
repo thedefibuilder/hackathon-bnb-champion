@@ -60,10 +60,12 @@ export default function UploadeTemplateForm({
   }, []);
 
   useEffect(() => {
-    toast({
-      title: "Template uploaded",
-      description: "Your template has been uploaded successfully.",
-    });
+    if (response) {
+      toast({
+        title: "Template uploaded",
+        description: "Your template has been uploaded successfully",
+      });
+    }
   }, [response]);
 
   const onSubmit = (data: z.infer<typeof uploadeTemplate>) => {
