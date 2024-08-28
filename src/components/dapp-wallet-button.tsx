@@ -13,7 +13,7 @@ import { Button } from "src/components/ui/button";
 import { COLORS } from "src/lib/dapp-config";
 
 export default function DappWalletButton() {
-  const { isConnecting, isConnected, chain } = useAccount();
+  const { isConnecting, isConnected, chain, address } = useAccount();
 
   const { openConnectModal } = useConnectModal();
   const { openAccountModal } = useAccountModal();
@@ -55,7 +55,7 @@ export default function DappWalletButton() {
         onClick={async () => openAccountModal?.()}
         type="button"
       >
-        <p>Sign out</p>
+        <p>{address?.slice(0, 10)}...</p>
       </Button>
     </div>
   );
